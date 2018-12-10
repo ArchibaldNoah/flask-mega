@@ -8,8 +8,12 @@
 	</head>
 	
 	<body>
-		<div>Microblog: <a href="/index"><b>Home<b></a>
-				<a href="/login"><b>Login<b></a></div>
+		<div>Microblog: <a href="{{ url_for('index') }}"><b>Home<b></a>
+		{% if current_user.is_anonymous %}
+				<a href="{{ url_for('login') }}"><b>Login<b></a></div>
+		{% else %}
+				<a href="{{ url_for('logout')  }}"><b>Logout<b></a></div>	
+		{% endif %}
 		<hr>
 		{%block content%}{%endblock%}
 	</body>
