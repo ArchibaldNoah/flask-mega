@@ -1,3 +1,5 @@
+{% extends 'bootstrap/base.html' %}
+
 <html>
 	<head>
 		{%if title%}
@@ -12,7 +14,9 @@
 		{% if current_user.is_anonymous %}
 				<a href="{{ url_for('login') }}"><b>Login<b></a></div>
 		{% else %}
-				<a href="{{ url_for('logout')  }}"><b>Logout<b></a></div>	
+				<a href="{{ url_for('explore') }}"><b>Explore</b></a>
+				<a href="{{ url_for('user', username = current_user.username) }}"><b>Profile</b></a>
+				<a href="{{ url_for('logout') }}"><b>Logout</b></a></div>
 		{% endif %}
 		<hr>
 		{%block content%}{%endblock%}
