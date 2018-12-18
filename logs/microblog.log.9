@@ -1,78 +1,57 @@
-2018-12-15 10:55:58,398 ERROR: Exception on /explore [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-psycopg2.DatabaseError: SSL SYSCALL error: Operation timed out
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 142, in before_request
-    if current_user.is_authenticated:
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/Developer/PycharmProjects/microblog/app/models.py", line 74, in load_user
-    return User.query.get(int(id))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 924, in get
-    ident, loading.load_on_pk_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1007, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2954, in one
-    ret = self.one_or_none()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2924, in one_or_none
-    ret = list(self)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.DatabaseError: (psycopg2.DatabaseError) SSL SYSCALL error: Operation timed out
- [SQL: 'SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".password_hash AS user_password_hash, "user".about_me AS user_about_me, "user".last_seen AS user_last_seen \nFROM "user" \nWHERE "user".id = %(param_1)s'] [parameters: {'param_1': 1}] (Background on this error at: http://sqlalche.me/e/4xp6)
-2018-12-15 10:59:34,730 ERROR: Exception on /explore [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2018-12-15 14:10:42,929 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-15 14:10:42,966 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
+2018-12-15 14:10:43,034 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-15 14:10:43,065 INFO: posts <flask_sqlalchemy.Pagination object at 0x1052ecf98> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
+2018-12-15 14:10:43,065 INFO: row in posts: <Post Es muss einen Paradigmenwechsel geben.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
+2018-12-15 14:10:43,066 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-15 14:10:43,066 INFO: row in posts: <Post Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
+2018-12-15 14:10:43,066 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-15 14:10:43,066 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
+2018-12-15 14:10:43,067 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-15 14:10:43,067 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
+2018-12-15 14:10:43,073 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-15 14:10:43,074 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
+2018-12-15 14:10:43,074 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-15 14:10:45,032 INFO: row in posts: <Post Es muss einen Paradigmenwechsel geben.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
+2018-12-15 14:10:45,039 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
+2018-12-15 14:10:45,040 INFO: row in posts: <Post Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
+2018-12-15 14:10:45,040 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
+2018-12-15 14:10:45,040 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
+2018-12-15 14:10:45,041 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
+2018-12-15 14:10:45,041 INFO: row in posts: <Post Die spinnen die Briten ;-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
+2018-12-15 14:10:45,047 INFO: author is cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
+2018-12-15 14:10:45,047 INFO: row in posts: <Post Ich sage hier nix mehr!> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
+2018-12-15 14:10:45,055 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
+2018-12-16 08:58:22,278 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
+2018-12-16 09:12:56,532 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
+2018-12-16 09:13:16,794 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:13:35,499 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:13:40,035 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:14:07,735 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:16:22,726 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
+2018-12-16 09:16:33,591 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:16:47,440 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:17:29,015 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:18:37,882 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:18:53,044 INFO: follow cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:108]
+2018-12-16 09:18:53,092 INFO: Query got user cheyenne [in /Users/Developer/PycharmProjects/microblog/app/routes.py:111]
+2018-12-16 09:18:53,097 INFO: juergen type <class 'werkzeug.local.LocalProxy'>  to follow cheyenne type <class 'app.models.User'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:118]
+2018-12-16 09:18:53,097 INFO: juergen to follow cheyenne [in /Users/Developer/PycharmProjects/microblog/app/models.py:42]
+2018-12-16 09:18:53,109 INFO: Create follower record for juergen of type <class 'app.models.User'> and cheyenne of type <class 'app.models.User'> [in /Users/Developer/PycharmProjects/microblog/app/models.py:44]
+2018-12-16 09:18:53,110 INFO: now commit to db [in /Users/Developer/PycharmProjects/microblog/app/routes.py:120]
+2018-12-16 09:18:53,127 INFO: now flash notification [in /Users/Developer/PycharmProjects/microblog/app/routes.py:122]
+2018-12-16 09:18:56,703 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:03,685 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:05,740 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:07,963 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:10,139 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:20,484 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:21,796 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:24,195 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:19:25,933 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:28:27,505 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
+2018-12-16 09:28:36,814 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
+2018-12-16 09:28:43,746 ERROR: Exception on /user/juergen [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,29 +67,10 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 138, in explore
-    return render_template('index.html', title='Explore', posts=posts)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 1, in top-level template code
-    {%extends "base.html"%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 20, in top-level template code
-    {%block content%}{%endblock%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 19, in block "content"
-    {% for post in posts %}
-TypeError: 'method' object is not iterable
-2018-12-15 11:10:01,137 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
-2018-12-15 11:10:07,294 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 11:10:07,309 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 11:10:07,309 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 11:10:07,309 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
+  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 85, in user
+    page = request.argsget('page', 1, type=int)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'argsget'
+2018-12-16 09:29:31,632 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
+2018-12-16 09:30:03,326 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]

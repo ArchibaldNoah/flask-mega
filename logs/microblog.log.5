@@ -1,4 +1,4 @@
-2018-12-15 13:45:48,395 ERROR: Exception on /explore [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2018-12-16 14:31:45,864 ERROR: Exception on / [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,68 +14,62 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 139, in explore
-    for row in posts:
-TypeError: 'method' object is not iterable
-2018-12-15 13:46:53,036 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
-2018-12-15 13:47:41,202 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:47:41,217 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:47:41,218 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:47:41,218 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:47:42,763 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:47:42,770 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:47:42,770 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:47:42,776 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:48:09,166 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:48:09,172 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:48:09,172 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:48:09,179 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:48:16,235 INFO: follow john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:101]
-2018-12-15 13:48:16,249 INFO: Query got user john1 [in /Users/Developer/PycharmProjects/microblog/app/routes.py:104]
-2018-12-15 13:48:16,255 INFO: juergen type <class 'werkzeug.local.LocalProxy'>  to follow john1 type <class 'app.models.User'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:111]
-2018-12-15 13:48:16,256 INFO: juergen to follow john1 [in /Users/Developer/PycharmProjects/microblog/app/models.py:42]
-2018-12-15 13:48:16,266 INFO: Create follower record for juergen of type <class 'app.models.User'> and john1 of type <class 'app.models.User'> [in /Users/Developer/PycharmProjects/microblog/app/models.py:44]
-2018-12-15 13:48:16,266 INFO: now commit to db [in /Users/Developer/PycharmProjects/microblog/app/routes.py:113]
-2018-12-15 13:48:16,284 INFO: now flash notification [in /Users/Developer/PycharmProjects/microblog/app/routes.py:115]
-2018-12-15 13:48:19,753 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:48:19,758 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:48:19,759 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:48:19,768 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:48:26,198 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:48:26,209 INFO: posts [<Post We are getting there.>, <Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:48:26,209 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:48:26,218 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:48:26,218 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:48:26,218 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:48:43,653 INFO: User logged in: leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:48:43,667 INFO: posts [] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:48:56,987 INFO: User logged in: leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:48:56,989 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
-2018-12-15 13:48:57,062 INFO: User logged in: leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:48:57,075 INFO: posts [<Post Das ist ein Test.>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:48:57,075 INFO: row in posts: <Post Das ist ein Test.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:48:57,076 INFO: author is leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:49:01,661 INFO: User logged in: leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:49:01,675 INFO: posts [<Post Das ist ein Test.>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:49:01,675 INFO: row in posts: <Post Das ist ein Test.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:49:01,676 INFO: author is leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:49:24,764 INFO: User logged in: john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:49:24,776 INFO: posts [] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:49:35,173 INFO: User logged in: john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:49:35,175 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
-2018-12-15 13:49:35,249 INFO: User logged in: john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:49:35,263 INFO: posts [<Post Bla bla bla ?>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:49:35,263 INFO: row in posts: <Post Bla bla bla ?> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:49:35,263 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:49:36,722 INFO: row in posts: <Post Bla bla bla ?> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:49:36,734 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:49:36,734 INFO: row in posts: <Post Das ist ein Test.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:49:36,740 INFO: author is leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:49:36,740 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:49:36,746 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:49:36,746 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:140]
-2018-12-15 13:49:36,752 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:141]
-2018-12-15 13:50:47,361 INFO: User logged in: john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:50:47,374 INFO: posts [<Post Bla bla bla ?>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:50:47,375 INFO: row in posts: <Post Bla bla bla ?> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:50:47,375 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
+  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 41, in index
+    return render_template('index.html', title='Home Page', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 67, in template
+    {% end with %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 67, in template
+    {% end with %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 243, in parse_with
+    drop_needle=True)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'endwith'. The innermost block that needs to be closed is 'with'.
+2018-12-16 14:33:19,893 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:37]
+2018-12-16 14:33:26,135 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]

@@ -1,29 +1,4 @@
-2018-12-15 13:13:31,985 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:13:32,029 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:13:32,030 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:13:32,030 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:13:43,893 INFO: User logged in: john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:13:43,904 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:13:43,905 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:13:43,913 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:14:01,047 INFO: User logged in: john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:14:01,049 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
-2018-12-15 13:14:01,117 INFO: User logged in: john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:14:01,131 INFO: posts [<Post We are getting there.>, <Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:14:01,131 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:14:01,132 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:14:01,132 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:14:01,138 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:14:12,106 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:14:12,119 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:14:12,120 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:14:12,120 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:40:17,720 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
-2018-12-15 13:40:35,948 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:40:35,966 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:40:35,966 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:40:35,966 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:40:41,806 ERROR: Exception on /explore [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2018-12-16 14:31:38,827 ERROR: Exception on /index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -39,8 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 139, in explore
-    return render_template('index.html', title='Explore', posts=posts)
+  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 41, in index
+    return render_template('index.html', title='Home Page', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
@@ -53,34 +28,47 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 67, in template
+    {% end with %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
+    return concat(self.root_render_func(self.new_context(vars)))
   File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 1, in top-level template code
-    {%extends "base.html"%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 20, in top-level template code
-    {%block content%}{%endblock%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 19, in block "content"
-    {% for post in posts %}
-TypeError: 'method' object is not iterable
-2018-12-15 13:45:34,794 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:34]
-2018-12-15 13:45:39,353 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 13:45:39,369 INFO: posts [<Post Mein erster Post. Hoffentlich:-)>] with type <class 'list'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:30]
-2018-12-15 13:45:39,369 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:32]
-2018-12-15 13:45:39,369 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 13:45:47,194 ERROR: Exception on /explore [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    {% extends "base.html" %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/routes.py", line 139, in explore
-    for row in posts:
-TypeError: 'method' object is not iterable
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 67, in template
+    {% end with %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
+    return Parser(self, source, name, encode_filename(filename)).parse()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
+    result = nodes.Template(self.subparse(), lineno=1)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 268, in parse_block
+    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
+    return getattr(self, 'parse_' + self.stream.current.value)()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 243, in parse_with
+    drop_needle=True)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
+    result = self.subparse(end_tokens)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
+    rv = self.parse_statement()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 144, in parse_statement
+    self.fail_unknown_tag(token.value, token.lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
+    return self._fail_ut_eof(name, self._end_token_stack, lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
+    self.fail(' '.join(message), lineno)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 59, in fail
+    raise exc(msg, lineno, self.name, self.filename)
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'end'. Jinja was looking for the following tags: 'endwith'. The innermost block that needs to be closed is 'with'.
+2018-12-16 14:31:45,827 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
