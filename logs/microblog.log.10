@@ -1,68 +1,60 @@
-2018-12-15 14:09:04,913 INFO: User logged in: cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:09:04,928 INFO: posts <flask_sqlalchemy.Pagination object at 0x10529cc50> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:09:04,929 INFO: row in posts: <Post Die spinnen die Briten ;-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:04,929 INFO: author is cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:18,061 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:09:18,076 INFO: posts <flask_sqlalchemy.Pagination object at 0x1053084a8> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:09:18,076 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:18,084 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:18,085 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:18,085 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:22,675 INFO: row in posts: <Post Die spinnen die Briten ;-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:09:22,682 INFO: author is cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:09:22,683 INFO: row in posts: <Post Ich sage hier nix mehr!> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:09:22,690 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:09:22,690 INFO: row in posts: <Post Bla bla bla ?> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:09:22,690 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:09:22,691 INFO: row in posts: <Post Das ist ein Test.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:09:22,696 INFO: author is leander  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:09:22,697 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:09:22,706 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:09:26,755 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:09:26,767 INFO: posts <flask_sqlalchemy.Pagination object at 0x10532abe0> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:09:26,767 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:26,773 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:26,773 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:26,773 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:42,295 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:09:42,296 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
-2018-12-15 14:09:42,366 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:09:42,379 INFO: posts <flask_sqlalchemy.Pagination object at 0x10529cc50> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:09:42,380 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:42,380 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:42,380 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:42,387 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:09:42,387 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:09:42,387 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:17,780 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:10:17,781 INFO: Submit post [in /Users/Developer/PycharmProjects/microblog/app/routes.py:22]
-2018-12-15 14:10:17,858 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:10:17,875 INFO: posts <flask_sqlalchemy.Pagination object at 0x10531ef28> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:10:17,875 INFO: row in posts: <Post Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:17,876 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:17,876 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:17,876 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:17,877 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:17,883 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:17,883 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:17,884 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:23,558 INFO: row in posts: <Post Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:10:23,568 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:10:23,569 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:10:23,569 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:10:23,569 INFO: row in posts: <Post Die spinnen die Briten ;-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:10:23,576 INFO: author is cheyenne  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:10:23,576 INFO: row in posts: <Post Ich sage hier nix mehr!> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:10:23,583 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:10:23,583 INFO: row in posts: <Post Bla bla bla ?> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:144]
-2018-12-15 14:10:23,583 INFO: author is john2  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:145]
-2018-12-15 14:10:28,490 INFO: User logged in: juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:19]
-2018-12-15 14:10:28,503 INFO: posts <flask_sqlalchemy.Pagination object at 0x104e96898> with type <class 'flask_sqlalchemy.Pagination'> [in /Users/Developer/PycharmProjects/microblog/app/routes.py:33]
-2018-12-15 14:10:28,503 INFO: row in posts: <Post Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:28,504 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:28,504 INFO: row in posts: <Post Jetzt muss ich aber auch mal was sagen.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:28,504 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:28,504 INFO: row in posts: <Post We are getting there.> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:28,510 INFO: author is john1  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
-2018-12-15 14:10:28,510 INFO: row in posts: <Post Mein erster Post. Hoffentlich:-)> with type <class 'app.models.Post'>  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:35]
-2018-12-15 14:10:28,510 INFO: author is juergen  [in /Users/Developer/PycharmProjects/microblog/app/routes.py:36]
+2018-12-25 19:00:31,723 ERROR: Exception on / [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.ProgrammingError: FEHLER:  Spalte post.language existiert nicht
+LINE 2: ... AS post_timestamp, post.user_id AS post_user_id, post.langu...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 38, in index
+    page, current_app.config['POSTS_PER_PAGE'], False)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_sqlalchemy/__init__.py", line 491, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2843, in all
+    return list(self)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.ProgrammingError) FEHLER:  Spalte post.language existiert nicht
+LINE 2: ... AS post_timestamp, post.user_id AS post_user_id, post.langu...
+                                                             ^
+ [SQL: 'SELECT anon_1.post_id AS anon_1_post_id, anon_1.post_body AS anon_1_post_body, anon_1.post_timestamp AS anon_1_post_timestamp, anon_1.post_user_id AS anon_1_post_user_id, anon_1.post_language AS anon_1_post_language \nFROM (SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.user_id AS post_user_id, post.language AS post_language \nFROM post JOIN followers ON followers.followed_id = post.user_id \nWHERE followers.follower_id = %(follower_id_1)s UNION SELECT post.id AS post_id, post.body AS post_body, post.timestamp AS post_timestamp, post.user_id AS post_user_id, post.language AS post_language \nFROM post \nWHERE post.user_id = %(user_id_1)s) AS anon_1 ORDER BY anon_1.post_timestamp DESC \n LIMIT %(param_1)s OFFSET %(param_2)s'] [parameters: {'follower_id_1': 1, 'user_id_1': 1, 'param_1': 5, 'param_2': 0}] (Background on this error at: http://sqlalche.me/e/f405)
