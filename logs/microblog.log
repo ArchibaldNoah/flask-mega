@@ -1,86 +1,85 @@
-2018-12-26 08:36:18,378 ERROR: Exception on /favicon.ico [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-06 07:06:05,184 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1791, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1774, in raise_routing_exception
-    raise request.routing_exception
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/ctx.py", line 336, in match_request
-    self.url_adapter.match(return_rule=True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1581, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server.  If you entered the URL manually please check your spelling and try again.
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
 
-During handling of the above exception, another exception occurred:
+
+The above exception was the direct cause of the following exception:
 
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1713, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1644, in handle_http_exception
-    return handler(e)
-  File "/Users/Developer/PycharmProjects/microblog/app/errors/handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'),404
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1811, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2087, in preprocess_request
+    rv = func()
+  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 16, in before_request
+    if current_user.is_authenticated:
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
+    return self.__local()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 335, in _get_user
+    current_app.login_manager._load_user()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 359, in _load_user
+    return self.reload_user()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 321, in reload_user
+    user = self.user_callback(user_id)
+  File "/Users/Developer/PycharmProjects/microblog/app/models.py", line 89, in load_user
+    return User.query.get(int(id))
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 924, in get
+    ident, loading.load_on_pk_identity)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1007, in _get_impl
+    return db_load_fn(self, primary_key_identity)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
+    return q.one()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2954, in one
+    ret = self.one_or_none()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2924, in one_or_none
+    ret = list(self)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
+    return meth(self, multiparams, params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
+    compiled_sql, distilled_params
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
+    exc_info
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
     raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/errors/404.html", line 4, in template
-    <h1>{{ File not found }}</h1>
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 268, in parse_block
-    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 876, in subparse
-    self.stream.expect('variable_end')
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/lexer.py", line 384, in expect
-    self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got 'not'
-2018-12-26 08:51:10,051 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 08:51:39,816 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:04:00,223 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:15:09,634 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:15:37,672 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:15:37,672 INFO: Configured MAIL SERVER: smtp.gmail.com [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 09:19:41,818 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:19:41,818 INFO: Configured MAIL SERVER: smtp.gmail.com [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 09:19:41,819 INFO: Configured USER and PASSWORD: None, wacoGE0735+ [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
-2018-12-26 09:22:06,988 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:22:06,989 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 09:22:06,989 INFO: Configured USER and PASSWORD: None, wacoGE0735+ [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
-2018-12-26 09:24:23,888 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:24:23,889 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 09:24:23,889 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, wacoGE0735+ [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
-2018-12-26 09:39:30,227 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 09:39:30,236 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 09:39:30,237 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, wacoGE0735+ [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
-2018-12-26 10:29:58,845 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 10:29:58,845 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 10:29:58,845 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
-2018-12-26 11:25:19,984 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-26 11:25:20,027 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:75]
-2018-12-26 11:25:20,028 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:76]
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
+    context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+ [SQL: 'SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".password_hash AS user_password_hash, "user".about_me AS user_about_me, "user".last_seen AS user_last_seen \nFROM "user" \nWHERE "user".id = %(param_1)s'] [parameters: {'param_1': 1}] (Background on this error at: http://sqlalche.me/e/e3q8)
+2019-01-06 07:33:57,448 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-06 07:33:57,448 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-06 07:33:57,448 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-06 07:34:15,037 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 07:34:15,039 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]

@@ -20,9 +20,10 @@ followers = db.Table(
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
-    email = db.Column(db.String(120), index=True, unique=True)
+    email = db.Column(db.String(64), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    memories = db.relationship('Memory', backref='cerebrum', lazy='dynamic')
     about_me = db.Column(db.String(140))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
@@ -70,6 +71,9 @@ class User(UserMixin, db.Model):
             current_app.config['SECRET_KEY'],
             algorithm='HS256').decode('utf-8')
 
+    def get_memories(self):
+        return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False).order_by(Memory.timestamp.desc())
+        
     @staticmethod
     def verify_reset_password_token(token):
         try:
@@ -94,3 +98,41 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Memory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    type = db.Column(db.String(32), index=True)
+    category = db.Column(db.String(32), index=True)
+    abstract = db.Column(db.String(256))
+    tags = db.relationship('Tag', secondary='memory_tag')
+    doc = db.Column(JSONB)
+    dormant = db.Column(db.Boolean, default=False)
+
+    def get_taglist(self):
+        taglist = []
+        for item in self.tags:
+            taglist.append(item.tag)
+        return taglist
+
+    def get_datestring(self):
+        return self.timestamp.strftime("%A %Y-%m:%d-%H-%M")
+
+    def __repr__(self):
+        return '<Memory {} of type {}>'.format(self.type,self.id)
+
+class Tag(db.Model):
+    __tablename__ = 'tag'
+    id = db.Column(db.Integer, primary_key=True)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    tag = db.Column(db.String(128), index=True, nullable=False, unique=True)
+    tagged_memories = db.relationship('Memory', secondary='memory_tag')
+
+
+class MemoryTag(db.Model):
+    __tablename__ = 'memory_tag'
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    memory_id = db.Column(db.Integer, db.ForeignKey('memory.id'), primary_key=True, autoincrement=False)
+    tag_id = db.Column(db.Integer, db.ForeignKey('tag.id'), primary_key=True, autoincrement=False)
+

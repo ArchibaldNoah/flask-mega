@@ -1,0 +1,33 @@
+<table class="table table-hover">
+	<tr>
+		<td width=256px>
+			<p>Type: {{ memory.type  }} </p>
+			<p>Category: {{ memory.category  }}</p>
+			<p>Date: {{ memory.get_datestring() }}</p>
+                        <p>ID: {{ memory.id  }} </p>
+		</td>
+		<td>
+			<p> {{ memory.abstract }} </p>
+
+			{% if ('source' in memory.doc) and (('source_url' in memory.doc) and (memory.doc['source_url']!='')) %}
+                            <p>found at <a href="{{ memory.doc['source_url'] }}" target="_blank">{{ memory.doc['source'] }}</a></p>
+			{% elif ('source' in memory.doc) and (('source_url' not in memory.doc) or (memory.doc['source_url']=='')) %}
+                            <p>found at  {{ memory.doc['source'] }}</p>
+                        {% elif (('source' not in memory.doc) or (memory.doc['source']=='')) and ('source_url' in memory.doc) %}
+                            <p>found at <a href="{{ memory.doc['source_url'] }}" target="_blank"> More information here </a></p>
+                        {% else %}
+                            <p> Source: No source information provided, better go and find somthing.
+                        {% endif %}
+			
+			{% if memory.tags %}
+                            <p> Tagged with: {{ ', '.join(memory.get_taglist()) }} </p>
+			{% endif%}           
+		</td>
+                <td width=64px>
+			<a title='edit' href="{{ url_for('memory.index') }}"><img src="/static/Eicon64.png"/></a>
+                </td>
+                <td width=64px>
+                        <a title='forget' href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}"><img src="/static/-icon64.png"/></a>
+                </td>
+	</tr>
+</table>

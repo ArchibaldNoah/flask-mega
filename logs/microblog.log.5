@@ -1,4 +1,4 @@
-2018-12-25 19:04:12,475 ERROR: Exception on /index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-05 16:14:18,294 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 45, in index
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 43, in index
     prev_url=prev_url)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -28,7 +28,7 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 2, in top-level template code
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
   File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -40,25 +40,19 @@ Traceback (most recent call last):
     {% block body -%}
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 48, in block "content"
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 11, in block "app_content"
-    {% include '_post.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/_post.html", line 4, in top-level template code
-    <a href="{{ url_for('user',username=post.author.username) }}">
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'user' with values ['username']. Did you mean 'main.user' instead?
-2018-12-25 19:11:39,133 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
-2018-12-25 19:14:04,002 ERROR: Exception on /user/juergen [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 9, in block "app_content"
+    {% include 'memory/_mem_item.html' %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 30, in top-level template code
+    <a title='forget' href="{{ url_for('memory.forget'+'?id={}'.format(str(memory.id))) }}"><img src="/static/-icon64.png"/></a>
+jinja2.exceptions.UndefinedError: 'str' is undefined
+2019-01-05 16:15:07,232 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:15:07,240 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 16:15:07,240 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:15:15,485 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:15:15,486 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:15:15,865 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -74,8 +68,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 75, in user
-    next_url=next_url, prev_url=prev_url)
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 43, in index
+    prev_url=prev_url)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
@@ -88,8 +82,8 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/user.html", line 1, in top-level template code
-    {% extends "base.html" %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
   File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
@@ -100,10 +94,12 @@ Traceback (most recent call last):
     {% block body -%}
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
     {% block content -%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 48, in block "content"
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/user.html", line 13, in block "app_content"
-    <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 9, in block "app_content"
+    {% include 'memory/_mem_item.html' %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 30, in top-level template code
+    <a title='forget' href="{{ url_for('memory.forget'+'?id={}'.format(memory.id)) }}"><img src="/static/-icon64.png"/></a>
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
@@ -114,5 +110,6 @@ Traceback (most recent call last):
     force_external=external)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'edit_profile'. Did you mean 'main.edit_profile' instead?
-2018-12-25 19:20:56,726 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:74]
+werkzeug.routing.BuildError: Could not build url for endpoint 'memory.forget?id=41'. Did you mean 'memory.forget' instead?
+2019-01-05 16:16:33,925 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:16:33,926 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]

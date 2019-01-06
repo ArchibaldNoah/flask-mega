@@ -1,8 +1,10 @@
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+
 from flask import Flask, request, current_app
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.dialects.postgresql import JSON, JSONB
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -42,6 +44,9 @@ def create_app(config_class=Config):
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)
+
+    from app.memory import bp as memory_bp
+    app.register_blueprint(memory_bp,url_prefix='/memory')
 
     if not app.debug and not app.testing:
         if app.config['MAIL_SERVER']:
