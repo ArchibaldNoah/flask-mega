@@ -1,0 +1,666 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.10
+-- Dumped by pg_dump version 9.6.10
+
+-- Started on 2019-01-06 07:49:34 CET
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 12393)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2203 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 185 (class 1259 OID 17645)
+-- Name: alembic_version; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.alembic_version (
+    version_num character varying(32) NOT NULL
+);
+
+
+ALTER TABLE public.alembic_version OWNER TO archibaldpg;
+
+--
+-- TOC entry 190 (class 1259 OID 17678)
+-- Name: followers; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.followers (
+    follower_id integer,
+    followed_id integer
+);
+
+
+ALTER TABLE public.followers OWNER TO archibaldpg;
+
+--
+-- TOC entry 192 (class 1259 OID 17693)
+-- Name: memory; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.memory (
+    id integer NOT NULL,
+    "timestamp" timestamp without time zone,
+    user_id integer,
+    doc jsonb,
+    abstract character varying(256),
+    category character varying(32),
+    type character varying(32),
+    dormant boolean
+);
+
+
+ALTER TABLE public.memory OWNER TO archibaldpg;
+
+--
+-- TOC entry 191 (class 1259 OID 17691)
+-- Name: memory_id_seq; Type: SEQUENCE; Schema: public; Owner: archibaldpg
+--
+
+CREATE SEQUENCE public.memory_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.memory_id_seq OWNER TO archibaldpg;
+
+--
+-- TOC entry 2204 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: memory_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: archibaldpg
+--
+
+ALTER SEQUENCE public.memory_id_seq OWNED BY public.memory.id;
+
+
+--
+-- TOC entry 195 (class 1259 OID 17718)
+-- Name: memory_tag; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.memory_tag (
+    memory_id integer NOT NULL,
+    tag_id integer NOT NULL,
+    "timestamp" timestamp without time zone
+);
+
+
+ALTER TABLE public.memory_tag OWNER TO archibaldpg;
+
+--
+-- TOC entry 189 (class 1259 OID 17662)
+-- Name: post; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.post (
+    id integer NOT NULL,
+    body character varying(140),
+    "timestamp" timestamp without time zone,
+    user_id integer
+);
+
+
+ALTER TABLE public.post OWNER TO archibaldpg;
+
+--
+-- TOC entry 188 (class 1259 OID 17660)
+-- Name: post_id_seq; Type: SEQUENCE; Schema: public; Owner: archibaldpg
+--
+
+CREATE SEQUENCE public.post_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.post_id_seq OWNER TO archibaldpg;
+
+--
+-- TOC entry 2205 (class 0 OID 0)
+-- Dependencies: 188
+-- Name: post_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: archibaldpg
+--
+
+ALTER SEQUENCE public.post_id_seq OWNED BY public.post.id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 17710)
+-- Name: tag; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public.tag (
+    id integer NOT NULL,
+    "timestamp" timestamp without time zone,
+    tag character varying(128) NOT NULL
+);
+
+
+ALTER TABLE public.tag OWNER TO archibaldpg;
+
+--
+-- TOC entry 193 (class 1259 OID 17708)
+-- Name: tag_id_seq; Type: SEQUENCE; Schema: public; Owner: archibaldpg
+--
+
+CREATE SEQUENCE public.tag_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.tag_id_seq OWNER TO archibaldpg;
+
+--
+-- TOC entry 2206 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: tag_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: archibaldpg
+--
+
+ALTER SEQUENCE public.tag_id_seq OWNED BY public.tag.id;
+
+
+--
+-- TOC entry 187 (class 1259 OID 17652)
+-- Name: user; Type: TABLE; Schema: public; Owner: archibaldpg
+--
+
+CREATE TABLE public."user" (
+    id integer NOT NULL,
+    username character varying(64),
+    email character varying(64),
+    password_hash character varying(128),
+    about_me character varying(255),
+    last_seen timestamp without time zone
+);
+
+
+ALTER TABLE public."user" OWNER TO archibaldpg;
+
+--
+-- TOC entry 186 (class 1259 OID 17650)
+-- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: archibaldpg
+--
+
+CREATE SEQUENCE public.user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.user_id_seq OWNER TO archibaldpg;
+
+--
+-- TOC entry 2207 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: archibaldpg
+--
+
+ALTER SEQUENCE public.user_id_seq OWNED BY public."user".id;
+
+
+--
+-- TOC entry 2039 (class 2604 OID 17696)
+-- Name: memory id; Type: DEFAULT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory ALTER COLUMN id SET DEFAULT nextval('public.memory_id_seq'::regclass);
+
+
+--
+-- TOC entry 2038 (class 2604 OID 17665)
+-- Name: post id; Type: DEFAULT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.post ALTER COLUMN id SET DEFAULT nextval('public.post_id_seq'::regclass);
+
+
+--
+-- TOC entry 2040 (class 2604 OID 17713)
+-- Name: tag id; Type: DEFAULT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.tag ALTER COLUMN id SET DEFAULT nextval('public.tag_id_seq'::regclass);
+
+
+--
+-- TOC entry 2037 (class 2604 OID 17655)
+-- Name: user id; Type: DEFAULT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public."user" ALTER COLUMN id SET DEFAULT nextval('public.user_id_seq'::regclass);
+
+
+--
+-- TOC entry 2185 (class 0 OID 17645)
+-- Dependencies: 185
+-- Data for Name: alembic_version; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.alembic_version (version_num) FROM stdin;
+d3fcd9291abb
+\.
+
+
+--
+-- TOC entry 2190 (class 0 OID 17678)
+-- Dependencies: 190
+-- Data for Name: followers; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.followers (follower_id, followed_id) FROM stdin;
+21	22
+21	1
+1	21
+1	9
+1	2
+\.
+
+
+--
+-- TOC entry 2192 (class 0 OID 17693)
+-- Dependencies: 192
+-- Data for Name: memory; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.memory (id, "timestamp", user_id, doc, abstract, category, type, dormant) FROM stdin;
+1	2018-12-30 10:25:06.005459	1	{"type": "news", "category": "financial"}	\N	\N	\N	f
+2	2018-12-30 10:26:44.950691	1	{"tags": ["test", "first"], "type": "news", "category": "financial"}	\N	\N	\N	f
+3	2018-12-30 10:44:23.36824	1	{"tags": ["test", "first"], "type": "news", "source": "http://wwww.spiegel.de", "category": "financial"}	\N	\N	\N	f
+4	2018-12-31 06:56:04.931396	1	{"type": "news", "source": "Spiegel Online", "category": "financial", "more_tags": ["Trump", "China", "Welthandel"], "source_url": "http://www.spiegel.de/wirtschaft/soziales/usa-und-china-donald-trump-verkuendet-grossen-fortschritt-bei-handelsgespraechen-a-1245837.html", "publication_date": "2018-12-31"}	Trump verkündet großen Fortschritt bei Gesprächen mit China	financial	news	f
+5	2019-01-01 11:34:27.580128	1	{"key": "test"}	tesla rules	tech	news	f
+6	2019-01-01 11:47:11.656745	1	{"key": "test"}	The desert expands every year.	sustainability	news	f
+7	2019-01-01 12:39:32.478087	1	{"key": "test"}	EURUSD reverses trend after Trump leaves office.	financial	news	f
+8	2019-01-01 13:45:34.364946	1	{"key": "test"}	Zum ersten Mal mehr als 100GW Windleistung am Netz	c3	t4	f
+9	2019-01-01 14:10:47.785152	1	{"key": "test"}	IKB Bilanzsumme fällt erstmals unter 14 Mrd. EUR.	business	news	f
+10	2019-01-01 14:17:03.776733	1	{"key": "test"}	Piep, piep, piep, wir ham uns ale lieb. (Cheyenne)	other	citation	f
+11	2019-01-01 18:09:24.540655	1	{"key": "test"}	Halloechen	sustainability	publication	f
+12	2019-01-03 06:02:26.381527	1	{"key": "test", "source": "Spiegel Online", "country": "DE"}	Apple senkt Umsatzerwartungen wegen sinkenden iPhone-Absatzes.	business	news	f
+13	2019-01-03 07:26:05.944058	1	{"source": "Spiegel Online", "source_url": "http://www.spiegel.de/wirtschaft/unternehmen/brasilien-amtsantritt-von-jair-bolsonaro-befluegelt-die-boersen-a-1246202.html"}	Amtsantritt von Jair Bolsonaro, Rechtspopulist löst Börsenfeuerwerk in Brasilien aus	business	news	f
+14	2019-01-04 03:02:29.427868	1	{"source": "Jürgen", "source_url": ""}	VW wird EV Weltmarktführer	business	news	f
+15	2019-01-04 03:45:37.494027	1	{"source": "Handelsblatt", "source_url": "http://www.handelsblatt.com"}	VW schlägt Tesla	business	news	f
+16	2019-01-04 03:48:03.415083	1	{"source": "Bild", "source_url": "http://www.bild.de"}	VW schlägt Tesla	business	news	f
+17	2019-01-04 03:49:21.325249	1	{"source": "Bild", "source_url": "http://www.bild.de"}	VW schlägt Tesla	business	news	f
+18	2019-01-04 03:53:08.012574	1	{"source": "Bild", "source_url": "http://www.bild.de"}	Tesla gejagt	business	news	f
+19	2019-01-04 03:55:37.437007	1	{"source": "Bild", "source_url": "http://www.bild.de"}	Tesla am Boden	business	news	f
+20	2019-01-04 03:59:38.99893	1	{"source": "Elektrek", "source_url": ""}	Tesla schlägt VW	business	news	f
+21	2019-01-04 04:09:06.974336	1	{"source": "Bild", "source_url": "http://www.bild.de"}	Tesla schlägt BMW	business	news	f
+22	2019-01-04 04:22:06.343736	1	{"source": "Elektrek", "source_url": ""}	Siemens fliegt elektrisch	business	news	f
+23	2019-01-04 04:28:18.17067	1	{"source": "Elektrek", "source_url": ""}	Siemens fliegt elektrisch	business	news	f
+24	2019-01-04 04:33:33.291094	1	{"source": "Elektrek", "source_url": ""}	Siemens fliegt elektrisch	business	news	f
+25	2019-01-04 04:35:40.201466	1	{"source": "Bild", "source_url": ""}	Tesla hebt ab	business	news	f
+26	2019-01-04 04:40:07.268468	1	{"source": "Elektr", "source_url": ""}	this is a test	business	news	f
+27	2019-01-04 04:40:07.735162	1	{"source": "Elektr", "source_url": ""}	this is a test	business	news	f
+28	2019-01-04 04:40:07.868631	1	{"source": "Elektr", "source_url": ""}	this is a test	business	news	f
+29	2019-01-04 04:43:59.855935	1	{"source": "Handelsblatt", "source_url": "https://www.handelsblatt.com/unternehmen/industrie/automarkt-vw-steigert-us-absatz-auch-2018-daimler-gm-und-ford-schwaecheln/23826670.html"}	VW steigert US-Absatz auch 2018 - Daimler, GM und Ford schwächeln	business	news	f
+30	2019-01-04 04:52:29.150101	1	{"source": "Handelsblatt", "source_url": "https://www.handelsblatt.com/unternehmen/handel-konsumgueter/ausblick-2019-unternehmen-flugtaxi-neue-boeing-e-scooter-das-sind-die-produkte-des-jahres-2019/23785780.html"}	Flugtaxi, neue Boeing, E-Scooter – Das sind die Produkte des Jahres 2019	business	news	f
+40	2019-01-05 09:11:01.695709	1	{"source": "Faz.net", "source_url": "https://www.faz.net/aktuell/politik/inland/bka-wurde-erst-spaet-ueber-datendiebstahl-informiert-15973471.html"}	Twitter Datenklau - Während das Bundesamt für Sicherheit in der Informationstechnik schon lange von dem Hacker-Angriff wusste, erfuhr das BKA erst nach Wochen von dem Fall. 	other	news	f
+41	2019-01-05 09:18:31.091228	1	{"source": "Faz.net", "source_url": "https://www.faz.net/aktuell/wirtschaft/unternehmen/model-3-tesla-fordert-im-handelsstreit-ausnahmen-15973444.html"}	Tesla findet keinen Ersatz für Bordcomputer aus China	business	news	f
+42	2019-01-05 18:05:37.60579	1	{"source": "Ikke", "source_url": ""}	abvba ldfaldb.k	business	news	t
+43	2019-01-05 23:40:19.941785	1	{"source": "Dr. Brust", "source_url": ""}	Dr. Brust beherrscht nun das Erstellen von Web Apps mit Flask.	tech	news	t
+\.
+
+
+--
+-- TOC entry 2208 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: memory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archibaldpg
+--
+
+SELECT pg_catalog.setval('public.memory_id_seq', 43, true);
+
+
+--
+-- TOC entry 2195 (class 0 OID 17718)
+-- Dependencies: 195
+-- Data for Name: memory_tag; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.memory_tag (memory_id, tag_id, "timestamp") FROM stdin;
+1	2	\N
+7	3	\N
+7	4	\N
+6	1	\N
+5	2	\N
+4	3	\N
+2	4	\N
+3	5	\N
+25	11	\N
+26	15	\N
+27	15	\N
+28	15	\N
+29	16	\N
+29	17	\N
+30	18	2019-01-04 04:52:29.224975
+30	11	2019-01-04 04:52:29.253483
+30	15	2019-01-04 04:52:29.270064
+40	20	2019-01-05 09:11:01.753515
+40	21	2019-01-05 09:11:01.783231
+40	22	2019-01-05 09:11:01.811771
+41	12	2019-01-05 09:18:31.153972
+41	3	2019-01-05 09:18:31.188534
+41	4	2019-01-05 09:18:31.234453
+42	6	2019-01-05 18:05:37.651712
+43	22	2019-01-05 23:40:20.0294
+43	23	2019-01-05 23:40:20.155941
+43	24	2019-01-05 23:40:20.408988
+\.
+
+
+--
+-- TOC entry 2189 (class 0 OID 17662)
+-- Dependencies: 189
+-- Data for Name: post; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.post (id, body, "timestamp", user_id) FROM stdin;
+1	Mein erster Post. Hoffentlich:-)	2018-12-15 08:27:17.58321	1
+2	We are getting there.	2018-12-15 12:14:01.050788	21
+3	Das ist ein Test.	2018-12-15 12:48:56.991222	2
+4	Bla bla bla ?	2018-12-15 12:49:35.176805	22
+5	Ich sage hier nix mehr!	2018-12-15 13:07:35.293414	22
+6	Die spinnen die Briten ;-)	2018-12-15 13:07:58.594302	9
+7	Jetzt muss ich aber auch mal was sagen.	2018-12-15 13:09:42.297792	1
+8	Die hervorragenden Qualitäten unserer Mitarbeiter haben zum Erfolg beigetragen.	2018-12-15 13:10:17.782648	1
+9	Es muss einen Paradigmenwechsel geben.	2018-12-15 13:10:42.968397	1
+10	Jetzt muss ich aber auch was sagen!	2018-12-16 08:31:37.066517	2
+11	Kinder an die Macht.	2018-12-16 08:31:59.953179	2
+12	Made it work ... cool ;-)	2018-12-25 18:32:18.818154	1
+\.
+
+
+--
+-- TOC entry 2209 (class 0 OID 0)
+-- Dependencies: 188
+-- Name: post_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archibaldpg
+--
+
+SELECT pg_catalog.setval('public.post_id_seq', 12, true);
+
+
+--
+-- TOC entry 2194 (class 0 OID 17710)
+-- Dependencies: 194
+-- Data for Name: tag; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public.tag (id, "timestamp", tag) FROM stdin;
+1	2018-12-30 15:02:48.233387	Fintech
+2	2018-12-30 15:07:26.196917	ESMA
+3	2018-12-31 06:59:42.647282	China
+4	2018-12-31 07:01:37.276552	Welthandel
+5	2018-12-31 07:01:54.61248	Trump
+6	2019-01-04 03:59:39.034572	Deutschland
+10	2019-01-04 04:09:07.02005	BMW
+11	2019-01-04 04:09:07.031563	EV
+12	2019-01-04 04:09:07.042796	Tesla
+15	2019-01-04 04:40:07.327425	Flugzeug
+16	2019-01-04 04:44:00.481718	USA
+17	2019-01-04 04:44:00.521986	VW
+18	2019-01-04 04:52:29.191179	Boeing
+20	2019-01-05 09:11:01.746031	Security
+21	2019-01-05 09:11:01.778163	Twitter
+22	2019-01-05 09:11:01.806493	Internet
+23	2019-01-05 23:40:20.128585	Programmierung
+24	2019-01-05 23:40:20.302703	Flask
+\.
+
+
+--
+-- TOC entry 2210 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: tag_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archibaldpg
+--
+
+SELECT pg_catalog.setval('public.tag_id_seq', 24, true);
+
+
+--
+-- TOC entry 2187 (class 0 OID 17652)
+-- Dependencies: 187
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: archibaldpg
+--
+
+COPY public."user" (id, username, email, password_hash, about_me, last_seen) FROM stdin;
+21	john1	john1@example.com	pbkdf2:sha256:50000$NPcEy2hW$24ee0e520e377c9b76989ebe0b459f8c8b44ec5347d50292e0f373ab5d6b78ec	Test user 1	2018-12-15 12:14:04.29649
+9	cheyenne	cheyenne@itellectual.de	pbkdf2:sha256:50000$kkjKD3a0$1d5d929d6f31cd845dbe38053143d41e35396b16d57e2f0026b766211e35722e	The Sweetest	2018-12-15 13:09:09.001043
+2	leander	leander@itellectual.de	pbkdf2:sha256:50000$HU4SpVqd$8af8284838bef0b13bf88c6ced9c7308f93dd1547e717b4299c65e2745b244ac	The athlete	2018-12-16 13:46:31.816998
+1	juergen	juergen@itellectual.de	pbkdf2:sha256:50000$H7CmZEZM$7975fac47448feef76b027d352c267ae69a87c2bb73db00bc2f871f7ac6371e0	Master of the universe	2019-01-06 06:34:14.976426
+22	john2	john2@example.com	pbkdf2:sha256:50000$FblzBPES$caa96ac3b97be31908e1023be8232ddfd641674e0e2aa989a478e429f61015e6	Brexiteer	2018-12-15 13:07:38.606022
+\.
+
+
+--
+-- TOC entry 2211 (class 0 OID 0)
+-- Dependencies: 186
+-- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: archibaldpg
+--
+
+SELECT pg_catalog.setval('public.user_id_seq', 22, true);
+
+
+--
+-- TOC entry 2042 (class 2606 OID 17649)
+-- Name: alembic_version alembic_version_pkc; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.alembic_version
+    ADD CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num);
+
+
+--
+-- TOC entry 2054 (class 2606 OID 17698)
+-- Name: memory memory_pkey; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory
+    ADD CONSTRAINT memory_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2061 (class 2606 OID 17722)
+-- Name: memory_tag memory_tag_pkey; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory_tag
+    ADD CONSTRAINT memory_tag_pkey PRIMARY KEY (memory_id, tag_id);
+
+
+--
+-- TOC entry 2049 (class 2606 OID 17667)
+-- Name: post post_pkey; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.post
+    ADD CONSTRAINT post_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2058 (class 2606 OID 17715)
+-- Name: tag tag_pkey; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.tag
+    ADD CONSTRAINT tag_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2046 (class 2606 OID 17657)
+-- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public."user"
+    ADD CONSTRAINT user_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2050 (class 1259 OID 17733)
+-- Name: ix_memory_category; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_memory_category ON public.memory USING btree (category);
+
+
+--
+-- TOC entry 2059 (class 1259 OID 17736)
+-- Name: ix_memory_tag_timestamp; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_memory_tag_timestamp ON public.memory_tag USING btree ("timestamp");
+
+
+--
+-- TOC entry 2051 (class 1259 OID 17704)
+-- Name: ix_memory_timestamp; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_memory_timestamp ON public.memory USING btree ("timestamp");
+
+
+--
+-- TOC entry 2052 (class 1259 OID 17734)
+-- Name: ix_memory_type; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_memory_type ON public.memory USING btree (type);
+
+
+--
+-- TOC entry 2047 (class 1259 OID 17673)
+-- Name: ix_post_timestamp; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_post_timestamp ON public.post USING btree ("timestamp");
+
+
+--
+-- TOC entry 2055 (class 1259 OID 17735)
+-- Name: ix_tag_tag; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE UNIQUE INDEX ix_tag_tag ON public.tag USING btree (tag);
+
+
+--
+-- TOC entry 2056 (class 1259 OID 17717)
+-- Name: ix_tag_timestamp; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE INDEX ix_tag_timestamp ON public.tag USING btree ("timestamp");
+
+
+--
+-- TOC entry 2043 (class 1259 OID 17674)
+-- Name: ix_user_email; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE UNIQUE INDEX ix_user_email ON public."user" USING btree (email);
+
+
+--
+-- TOC entry 2044 (class 1259 OID 17659)
+-- Name: ix_user_username; Type: INDEX; Schema: public; Owner: archibaldpg
+--
+
+CREATE UNIQUE INDEX ix_user_username ON public."user" USING btree (username);
+
+
+--
+-- TOC entry 2063 (class 2606 OID 17681)
+-- Name: followers followers_followed_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.followers
+    ADD CONSTRAINT followers_followed_id_fkey FOREIGN KEY (followed_id) REFERENCES public."user"(id);
+
+
+--
+-- TOC entry 2064 (class 2606 OID 17686)
+-- Name: followers followers_follower_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.followers
+    ADD CONSTRAINT followers_follower_id_fkey FOREIGN KEY (follower_id) REFERENCES public."user"(id);
+
+
+--
+-- TOC entry 2066 (class 2606 OID 17723)
+-- Name: memory_tag memory_tag_memory_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory_tag
+    ADD CONSTRAINT memory_tag_memory_id_fkey FOREIGN KEY (memory_id) REFERENCES public.memory(id);
+
+
+--
+-- TOC entry 2067 (class 2606 OID 17728)
+-- Name: memory_tag memory_tag_tag_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory_tag
+    ADD CONSTRAINT memory_tag_tag_id_fkey FOREIGN KEY (tag_id) REFERENCES public.tag(id);
+
+
+--
+-- TOC entry 2065 (class 2606 OID 17699)
+-- Name: memory memory_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.memory
+    ADD CONSTRAINT memory_user_id_fkey FOREIGN KEY (user_id) REFERENCES public."user"(id);
+
+
+--
+-- TOC entry 2062 (class 2606 OID 17668)
+-- Name: post post_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: archibaldpg
+--
+
+ALTER TABLE ONLY public.post
+    ADD CONSTRAINT post_user_id_fkey FOREIGN KEY (user_id) REFERENCES public."user"(id);
+
+
+-- Completed on 2019-01-06 07:49:35 CET
+
+--
+-- PostgreSQL database dump complete
+--
+
