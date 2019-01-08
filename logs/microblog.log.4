@@ -1,64 +1,4 @@
-2019-01-05 16:16:33,926 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:16:41,318 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:16:41,318 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:17:20,410 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:55]
-2019-01-05 16:17:21,217 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:55]
-2019-01-05 16:20:54,204 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:20:54,204 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 16:20:54,205 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:20:58,230 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:20:58,231 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:21:01,268 ERROR: Exception on /memory/forget [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 50, in forget
-    memory_id = request.args.id
-AttributeError: 'ImmutableMultiDict' object has no attribute 'id'
-2019-01-05 16:23:17,512 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:23:17,512 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 16:23:17,512 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:23:42,047 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:23:42,047 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:23:59,761 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:23:59,761 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:24:04,970 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 16:24:08,959 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 16:27:50,051 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:27:50,051 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 16:27:50,051 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:27:53,901 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:27:53,902 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:28:00,113 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 16:28:03,988 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 16:28:06,900 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 16:32:16,388 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:32:16,388 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 16:32:16,388 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:32:21,502 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:32:21,502 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:32:40,930 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-05 17:04:32,034 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 17:04:32,073 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 17:04:32,073 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 18:42:21,702 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 18:42:21,740 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 18:42:21,741 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 18:42:25,618 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 18:42:25,618 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 18:42:27,848 ERROR: Exception on /memory/forget [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-05 18:45:32,192 ERROR: Exception on /memory/forget [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -75,15 +15,72 @@ Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
   File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 71, in forget
-    form.tags = memory.get_tags()
-AttributeError: 'Memory' object has no attribute 'get_tags'
-2019-01-05 18:43:51,227 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 18:43:51,228 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 18:43:51,228 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 18:43:55,320 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 18:43:55,320 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 18:45:26,991 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 18:45:26,992 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 18:45:26,992 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 18:45:30,537 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 18:45:30,537 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+    form.tags.data = memory.get_taglist()
+AttributeError: 'ForgetForm' object has no attribute 'tags'
+2019-01-05 18:46:47,573 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:46:47,573 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:46:47,574 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:46:50,923 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:46:50,924 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:47:09,863 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:47:09,863 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:47:15,314 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:47:15,564 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:47:21,443 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:47:21,444 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:47:25,684 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:47:25,684 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:54:17,588 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:54:17,589 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:54:17,589 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:54:27,745 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:54:27,745 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:54:40,668 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:54:40,669 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:55:19,713 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:55:19,713 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:55:19,713 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:55:25,302 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:55:25,303 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:55:34,193 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:55:34,193 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:01:03,517 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:01:03,553 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:03:23,974 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:03:23,975 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:03:23,975 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:04:52,839 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:04:52,839 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:04:52,839 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:04:57,868 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:04:57,868 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:05:03,740 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:05:03,741 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:05:37,634 INFO: ['Deutschland'] [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:125]
+2019-01-05 19:05:37,635 INFO: check if tag Deutschland is already in db [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:129]
+2019-01-05 19:05:37,650 INFO: old tag Deutschland retrieved from  db with id 6 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:140]
+2019-01-05 19:05:37,748 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:05:37,748 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:05:51,465 INFO: forgotten: 42 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 19:05:51,562 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:05:51,563 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:11:02,329 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:11:02,329 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:11:02,329 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:11:16,014 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:11:16,014 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:11:26,279 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:11:26,279 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:11:26,279 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:11:35,651 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:11:35,651 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:12:51,103 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:12:51,157 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:12:51,158 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:16:58,478 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 19:16:58,479 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 19:16:58,479 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 19:17:09,479 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:17:09,479 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 19:17:17,253 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 19:17:17,254 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]

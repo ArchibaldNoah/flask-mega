@@ -1,106 +1,58 @@
-2019-01-05 19:20:47,663 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 19:20:47,783 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 19:20:47,783 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 19:20:51,124 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 19:20:51,125 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 19:21:09,987 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 19:21:09,987 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 19:21:09,987 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 19:27:08,592 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 19:27:08,593 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 19:27:11,379 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 19:27:11,379 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 19:27:15,934 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 19:27:15,934 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 19:27:23,764 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 19:27:23,764 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-06 00:18:27,646 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-psycopg2.OperationalError: server closed the connection unexpectedly
-	This probably means the server terminated abnormally
-	before or while processing the request.
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 16, in before_request
-    if current_user.is_authenticated:
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/Developer/PycharmProjects/microblog/app/models.py", line 89, in load_user
-    return User.query.get(int(id))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 924, in get
-    ident, loading.load_on_pk_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1007, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2954, in one
-    ret = self.one_or_none()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2924, in one_or_none
-    ret = list(self)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) server closed the connection unexpectedly
-	This probably means the server terminated abnormally
-	before or while processing the request.
- [SQL: 'SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".password_hash AS user_password_hash, "user".about_me AS user_about_me, "user".last_seen AS user_last_seen \nFROM "user" \nWHERE "user".id = %(param_1)s'] [parameters: {'param_1': 1}] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-01-06 00:19:01,973 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-06 00:19:01,973 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-06 00:19:01,974 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-06 00:19:34,160 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-06 00:19:34,256 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-06 00:26:21,284 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-06 00:26:21,284 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-06 00:26:21,284 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-06 00:26:28,246 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-06 00:26:28,298 INFO: output memories: <flask_sqlalchemy.Pagination object at 0x103b454e0> [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-06 00:28:17,164 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-06 00:28:17,165 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-06 00:28:17,165 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-06 00:28:23,181 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:28:23,182 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:34:34,496 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-06 00:34:34,496 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-06 00:34:34,497 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-06 00:34:41,418 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:34:41,419 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:34:44,292 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:34:44,294 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:34:57,192 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:34:57,194 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:34:59,373 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:34:59,374 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:38:13,572 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-06 00:38:13,589 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-06 00:38:13,589 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-06 00:38:36,405 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-06 00:38:36,406 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-06 00:38:36,406 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-06 00:38:53,751 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:38:53,752 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:40:19,965 INFO: ['Internet', 'Programmierung', 'Flask'] [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:125]
+2019-01-06 00:40:20,007 INFO: check if tag Internet is already in db [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:129]
+2019-01-06 00:40:20,028 INFO: old tag Internet retrieved from  db with id 22 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:140]
+2019-01-06 00:40:20,065 INFO: check if tag Programmierung is already in db [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:129]
+2019-01-06 00:40:20,155 INFO: added new tag Programmierung to db with id 23 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:136]
+2019-01-06 00:40:20,223 INFO: check if tag Flask is already in db [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:129]
+2019-01-06 00:40:20,408 INFO: added new tag Flask to db with id 24 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:136]
+2019-01-06 00:40:20,617 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:40:20,619 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:41:02,634 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:41:02,699 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:46:03,123 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:46:03,137 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-06 00:46:11,090 INFO: forgotten: 43 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-06 00:46:11,182 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-06 00:46:11,183 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]

@@ -1,4 +1,14 @@
-2019-01-05 16:14:18,294 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-05 16:16:33,926 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:16:41,318 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:16:41,318 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:17:20,410 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:55]
+2019-01-05 16:17:21,217 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:55]
+2019-01-05 16:20:54,204 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:20:54,204 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 16:20:54,205 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:20:58,230 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:20:58,231 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:21:01,268 ERROR: Exception on /memory/forget [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,45 +24,41 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 43, in index
-    prev_url=prev_url)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 9, in block "app_content"
-    {% include 'memory/_mem_item.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 30, in top-level template code
-    <a title='forget' href="{{ url_for('memory.forget'+'?id={}'.format(str(memory.id))) }}"><img src="/static/-icon64.png"/></a>
-jinja2.exceptions.UndefinedError: 'str' is undefined
-2019-01-05 16:15:07,232 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:15:07,240 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-05 16:15:07,240 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-05 16:15:15,485 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-05 16:15:15,486 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-05 16:15:15,865 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 50, in forget
+    memory_id = request.args.id
+AttributeError: 'ImmutableMultiDict' object has no attribute 'id'
+2019-01-05 16:23:17,512 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:23:17,512 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 16:23:17,512 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:23:42,047 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:23:42,047 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:23:59,761 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:23:59,761 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:24:04,970 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 16:24:08,959 INFO: forgotten: ImmutableMultiDict([('id', '41')]) [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 16:27:50,051 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:27:50,051 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 16:27:50,051 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:27:53,901 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:27:53,902 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:28:00,113 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 16:28:03,988 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 16:28:06,900 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 16:32:16,388 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 16:32:16,388 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 16:32:16,388 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 16:32:21,502 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 16:32:21,502 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 16:32:40,930 INFO: forgotten: 41 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
+2019-01-05 17:04:32,034 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 17:04:32,073 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 17:04:32,073 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:42:21,702 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:42:21,740 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:42:21,741 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:42:25,618 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:42:25,618 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:42:27,848 ERROR: Exception on /memory/forget [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -68,48 +74,16 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 43, in index
-    prev_url=prev_url)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
-    context, ctx.app)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
-    rv = template.render(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
-    {% block content -%}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 9, in block "app_content"
-    {% include 'memory/_mem_item.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 30, in top-level template code
-    <a title='forget' href="{{ url_for('memory.forget'+'?id={}'.format(memory.id)) }}"><img src="/static/-icon64.png"/></a>
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
-    force_external=external)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'memory.forget?id=41'. Did you mean 'memory.forget' instead?
-2019-01-05 16:16:33,925 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-05 16:16:33,926 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 71, in forget
+    form.tags = memory.get_tags()
+AttributeError: 'Memory' object has no attribute 'get_tags'
+2019-01-05 18:43:51,227 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:43:51,228 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:43:51,228 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:43:55,320 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:43:55,320 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+2019-01-05 18:45:26,991 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-05 18:45:26,992 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-05 18:45:26,992 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-05 18:45:30,537 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+2019-01-05 18:45:30,537 INFO: output memories [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]

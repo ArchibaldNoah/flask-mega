@@ -95,6 +95,32 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 """
+@bp.route('/edit', methods=['GET', 'POST'])
+@login_required
+def edit():
+    # get existing memory
+    memory_id = request.args.get('id')
+    memory = Memory.query.get(memory_id)
+
+    # create a memory form to be populated
+    form=EditMemoryForm()
+    # apply changes
+    if form_validate_on_submit():
+        memory.type = form.type.data
+        memory.category = form.category.data
+        memory.abstract = form.abstracct-data
+        taglist = form.tags.data.replace(' ','').replace(';',',').split(',')
+        memory.tags = form.abstract.
+    # at start show entries from db
+    elif request.method == 'GET':
+        form.type.data = memory.
+        form.category.data = memory.category
+        form.abstract.data = memory.abstract
+        form.tags.data = ','.join(memory.get_tags())
+    else:
+        pass # raise some error
+    return render_template('edit_memory.html', title='Remember and Rethink')
+
 
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
