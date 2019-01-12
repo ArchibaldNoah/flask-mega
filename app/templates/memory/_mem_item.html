@@ -25,10 +25,12 @@
 			{% endif%}           
 		</td>
                 <td width=64px>
-			<a title='edit' href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}"><img src="/static/Eicon64.png"/></a>
+					<!-- <a title='edit' href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}"><img src="/static/Eicon64.png"/></a> --->
+					<a class="btn btn-default btn-lg" href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}" role="button" title="edit">e</a>
                 </td>
                 <td width=64px>
-                        <a title='forget' href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}"><img src="/static/-icon64.png"/></a>
+					   <!-- <a title='forget' href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}"><img src="/static/-icon64.png"/></a> --->
+					   <a class="btn btn-default btn-lg" href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}" role="button" title="delete">-</a>
                 </td>
 	</tr>
 </table>

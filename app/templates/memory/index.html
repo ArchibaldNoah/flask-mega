@@ -3,7 +3,40 @@
 
 {% block app_content %}
     <a href="{{ url_for('memory.new') }}"><img src="/static/+icon64.png"/></a>
-    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="InputTags">Filter on/off</label><br>
+            <button type="button" class="btn btn-default">Filter is off</button>
+        </div>
+        <div class="col-md-2">
+                <label for="InputTags">Filter by Type</label>
+            <select class="form-control">
+                <option>News</option>
+                <option>Facts</option>
+                <option>UseCases</option>>
+                <option>Any</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+                <label for="InputTags">Filter by Category</label>
+            <select class="form-control">
+                <option>Technology</option>
+                <option>Sustainability</option>
+                <option>Finance</option>
+                <option>Other</option>
+                <option>Any</option>
+            </select>
+        </div>
+        <div class="col-md-5">
+            <label for="InputTags">Filter by Tags</label>
+            <input type="text" class="form-control" id="InputTags" placeholder="Enter tags here">
+        </div>
+        <div class="col-md-1 center">
+                <label for="InputTags">Refresh</label>
+                <a href="#"><span class="glyphicon glyphicon-refresh"></span></a>
+        </div>
+    </div>
     <br>
     {% for memory in memories %}
         {% include 'memory/_mem_item.html' %}
