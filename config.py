@@ -18,3 +18,8 @@ class Config(object):
 	MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 	MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 	ADMINS=['dr.juergen.brust@gmail.com']
+
+#   DOCUMENTS
+	DOCUMENTS={"account" :{"01" : "username","02" : "password"},
+               "contract" : {"01" : "counterparty","02" : "contract_type","03" : "contract_start_date","04" : "contract_end_date"}
+			  }

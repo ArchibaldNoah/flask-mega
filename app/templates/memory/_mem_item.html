@@ -3,8 +3,9 @@
 		<td width=256px>
 			<p>Type: {{ memory.type  }} </p>
 			<p>Category: {{ memory.category  }}</p>
-			<p>Date: {{ memory.get_datestring() }}</p>
-                        <p>ID: {{ memory.id  }} </p>
+			<p>M: {{ memory.get_memory_date() }}</p>
+			<p>C: {{ memory.get_datestring() }}</p>
+            <p>ID: {{ memory.id  }} </p>
 		</td>
 		<td>
 			<p> {{ memory.abstract }} </p>
@@ -24,7 +25,7 @@
 			{% endif%}           
 		</td>
                 <td width=64px>
-			<a title='edit' href="{{ url_for('memory.index') }}"><img src="/static/Eicon64.png"/></a>
+			<a title='edit' href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}"><img src="/static/Eicon64.png"/></a>
                 </td>
                 <td width=64px>
                         <a title='forget' href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}"><img src="/static/-icon64.png"/></a>

@@ -6,7 +6,7 @@ from wtforms import StringField, SubmitField
 
 from app import db
 #from app.main.forms import EditProfileForm, PostForm
-from app.memory.forms import NewMemoryForm, ForgetForm
+from app.memory.forms import NewMemoryForm, EditMemoryForm, ForgetForm
 from app.models import User, Memory, Tag, MemoryTag
 from app.memory import bp
 
@@ -101,25 +101,70 @@ def edit():
     # get existing memory
     memory_id = request.args.get('id')
     memory = Memory.query.get(memory_id)
+    change_detected = False
 
     # create a memory form to be populated
-    form=EditMemoryForm()
+    form = EditMemoryForm()
     # apply changes
-    if form_validate_on_submit():
-        memory.type = form.type.data
-        memory.category = form.category.data
-        memory.abstract = form.abstracct-data
-        taglist = form.tags.data.replace(' ','').replace(';',',').split(',')
-        memory.tags = form.abstract.
+    if form.validate_on_submit():
+        orig_taglist = memory.get_taglist()
+        if form.memorize.data:
+            if memory.type != form.type.data:
+                change_detected = True
+                memory.type = form.type.data
+            if memory.category != form.category.data:
+                change_detected = True
+                memory.category = form.category.data
+            if memory.abstract != form.abstract.data:
+                change_detected = True
+                memory.abstract = form.abstract.data        
+            taglist = form.tags.data.replace(' ','').replace(';',',').split(',')
+            if memory.get_taglist() != taglist:
+                change_detected = True
+            # check if tag is new, in Tag table directly, if yes add together with relationship
+                for item in taglist:
+                    if Tag.query.filter(Tag.tag==item).first() is None:
+                        # new tag ... write to Tag table and remember tag.id
+                        tag_in = Tag(tag=item)
+                        db.session.add(tag_in)
+                        db.session.flush()
+                        tag_id = tag_in.id       #Tag.query.filter(Tag.tag==item).first()
+                        current_app.logger.info( 'edit: added new tag {} to db with id {}'.format(item,tag_id) )
+                        # tag is new so add memory-tag relation to db and flush
+                        db.session.add(MemoryTag(memory_id=memory_id,tag_id=tag_id))
+                        db.session.flush()
+                    else:
+                        # tag alrerady exists so get tag.id from db
+                        tag_id = Tag.query.filter(Tag.tag==item).first().id
+                        # now check if the relation memory-tag already exists, if not then add
+                        if MemoryTag.query.filter(MemoryTag.memory_id==memory_id, MemoryTag.tag_id==tag_id).first() is None:
+                            db.session.add(MemoryTag(memory_id=memory_id,tag_id=tag_id))
+                            db.session.flush()
+                # now check if items were removed
+                for item in orig_taglist:
+                    if item not in taglist:
+                        # remove relationship in MemoryTag
+                        change_detected=True
+                        tag_id = Tag.query.filter(Tag.tag==item).first().id
+                        current_app.logger.info('remove relationship {}:{}'.format(memory_id,tag_id))
+                        mtd = MemoryTag.query.filter(MemoryTag.memory_id==memory_id, MemoryTag.tag_id==tag_id).first()
+                        db.session.delete(mtd)
+                        db.session.flush() 
+            if change_detected:
+                memory.timestamp = datetime.now()
+                db.session.commit()
+        return redirect(url_for('memory.index'))            
     # at start show entries from db
     elif request.method == 'GET':
-        form.type.data = memory.
+        form.id.data = memory.id
+        form.type.data = memory.type
         form.category.data = memory.category
         form.abstract.data = memory.abstract
-        form.tags.data = ','.join(memory.get_tags())
+        form.tags.data = ','.join(memory.get_taglist())
+        form.posted.data = memory.get_datestring()
     else:
         pass # raise some error
-    return render_template('edit_memory.html', title='Remember and Rethink')
+    return render_template('memory/edit_memory.html', title='Remember and Rethink', form=form, memory=memory)
 
 
 @bp.route('/new', methods=['GET', 'POST'])
@@ -139,8 +184,9 @@ def new():
         memory = Memory(type=form.type.data, 
                         category=form.category.data,
                         abstract=form.abstract.data,
-			doc=jsondoc,
-                        user_id=current_user.id)
+			            doc=jsondoc,
+                        user_id=current_user.id,
+                        memorized=datetime.now())
         db.session.add(memory)
         db.session.commit()
         flash('New memory created!')

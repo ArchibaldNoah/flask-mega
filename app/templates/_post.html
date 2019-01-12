@@ -7,7 +7,13 @@
 			{{said}} {{ moment(post.timestamp).fromNow() }}
 		</td>
 		<td>
-			<a href="{{ url_for('main.user',username=post.author.username) }}">{{ post.author.username }} </a> says: <br> {{ post.body }} 
+			{% set user_link %}
+				<span class="user_popup">
+					<a href="{{ url_for('main.user',username=post.author.username) }}">{{ post.author.username }} </a> 
+				</span>
+			{% endset %}
+			{{ user_link }} said {{ moment(post.timestamp).fromNow() }}  
+			<br> {{ post.body }} 
 		</td>
 	</tr>
 </table>

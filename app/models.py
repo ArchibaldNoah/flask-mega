@@ -102,6 +102,7 @@ class Post(db.Model):
 class Memory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    memorized = db.Column(db.DateTime, index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     type = db.Column(db.String(32), index=True)
     category = db.Column(db.String(32), index=True)
@@ -117,7 +118,10 @@ class Memory(db.Model):
         return taglist
 
     def get_datestring(self):
-        return self.timestamp.strftime("%A %Y-%m:%d-%H-%M")
+        return self.timestamp.strftime("%A %Y-%m-%d:%H-%M")
+
+    def get_memory_date(self):
+        return self.memorized.strftime("%A %Y-%m-%d:%H-%M")
 
     def __repr__(self):
         return '<Memory {} of type {}>'.format(self.type,self.id)
