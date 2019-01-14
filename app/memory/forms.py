@@ -7,25 +7,27 @@ from app.models import User, Memory, Tag, MemoryTag
 
 class NewMemoryForm(FlaskForm):
 
-    type = SelectField('Type', choices=[('account','Account'),      # internet konto informationen, e.g. Moodys
-                                          ('citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
-                                          ('contract','Contract'),  # contract with another entity/person, receivables, payables
-                                          ('fact','Fact'),        	# facts to be remembered, e.g. world oil production 
-                                          ('news','News'),		    # news
-                                          ('payment','Payment'),    # payments made and payments received
-                                          ('publication','Publication'),# documents worth reading
-                                          ('speech','Speech'),		# personal speech fragments, to be used in some future presentations
-                                          ('thought','Thought'),	# what comes to mind and is considered worth remembering, to do
-                                          ('usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
+    type = SelectField('Type', choices=[('iAccount','Internet Account'),      # internet konto informationen, e.g. Moodys
+                                          ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		    # news
+                                          ('Payable','Payable'),    # empfangene Rechnungen
+                                          ('Payment','Payment'),    # payments made and payments received
+                                          ('Publication','Publication'),# documents worth reading
+                                          ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
                                           default='news')
 
-    category = SelectField('Type', choices=[('business','Business'),		# e.g. company news, own business
-                                            ('finance','Finance'),		    # e.g. markets, stock prices
-                                            ('home','Home'),                 # e.g. around home including personal finance issues
-                                            ('mzp','MZ-Patent'),            # in relation to family business
-                                            ('sustainability','Sustainability'), # e.g. global warming, evs, batteries, demography
-                                            ('tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
-                                            ('other','Other')])			    # the rest
+    category = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
+                                            ('Finance','Finance'),		    # e.g. markets, stock prices
+                                            ('Home','Home'),                 # e.g. around home including personal finance issues
+                                            ('MZ-Patent','MZ-Patent'),            # in relation to family business
+                                            ('Sustainability','Sustainability'), # e.g. global warming, evs, batteries, demography
+                                            ('Tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
+                                            ('Other','Other')])			    # the rest
 
     abstract = TextAreaField('Abstract', validators=[DataRequired(), Length(min=1,max=256)])
     
@@ -33,25 +35,27 @@ class NewMemoryForm(FlaskForm):
 
 class EditMemoryForm(FlaskForm):
     id = StringField('id', render_kw={'readonly': True})
-    type = SelectField('Type', choices=[('account','Account'),      # internet konto informationen, e.g. Moodys
-                                          ('citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
-                                          ('fact','Fact'),        	# facts to be remembered, e.g. world oil production 
-                                          ('news','News'),		    # news
-                                          ('payable','Payable'),    # empfangene Rechnungen
-                                          ('payment','Payment'),    # payments made and payments received
-                                          ('publication','Publication'),# documents worth reading
-                                          ('receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
-                                          ('speech','Speech'),		# personal speech fragments, to be used in some future presentations
-                                          ('thought','Thought'),	# what comes to mind and is considered worth remembering
-                                          ('transaction','Transaction'),    # contract with another entity/person
-                                          ('usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
+    type = SelectField('Type', choices=[('iAccount','Internet Account'),          # internet konto informationen, e.g. Moodys
+                                          ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		    # news
+                                          ('Payable','Payable'),    # empfangene Rechnungen
+                                          ('Payment','Payment'),    # payments made and payments received
+                                          ('Publication','Publication'),# documents worth reading
+                                          ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
                                           default='news')
 
-    category = SelectField('Type', choices=[('business','Business'),		# e.g. company news
-                                           ('finance','Finance'),		# e.g. stock prices
-                                           ('sustainability','Sustainability'), # e.g. global warming, evs, batteries
-                                           ('tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning  
-                                           ('other','Other')])			# the rest
+    category = SelectField('Type', choices=[('Business','Business'),		# e.g. company news
+                                            ('Finance','Finance'),		    # e.g. markets, stock prices
+                                            ('Home','Home'),                 # e.g. around home including personal finance issues
+                                            ('MZ-Patent','MZ-Patent'),            # in relation to family business
+                                            ('Sustainability','Sustainability'), # e.g. global warming, evs, batteries, demography
+                                            ('Tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
+                                            ('Other','Other')])			    # the rest
     abstract = TextAreaField('Abstract')
     tags = TextAreaField('Tags', validators=[DataRequired(),Length(min=1,max=256)])
     posted = StringField('Posted on', render_kw={'readonly': True})
@@ -68,4 +72,39 @@ class ForgetForm(FlaskForm):
     keep = SubmitField('keep')
     forget = SubmitField('forget')
 # class EditMemoryForm(FlaskForm):
-    
+
+# Subform in memory/index which holds the filter parameters
+class MemoryFilterForm(FlaskForm):
+
+    slcType = SelectField('Type', choices=[('Any','Any'),                   # al are fine
+                                          ('iAccount','Internet Account'),  # internet konto informationen, e.g. Moodys
+                                          ('Citation','Citation'),          # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),          # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	        # facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		            # news
+                                          ('Payable','Payable'),            # empfangene Rechnungen
+                                          ('Payment','Payment'),            # payments made and payments received
+                                          ('Publication','Publication'),    # documents worth reading
+                                          ('Receivable','Receivable'),      # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),		        # personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	        # what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	        # usecases worth remembering, e.g. big data use cases
+                                    default='Any')
+
+    slcCategory = SelectField('Category', choices=[('Any','Any'),
+                                            ('Business','Business'),		# e.g. company news
+                                            ('Finance','Finance'),		    # e.g. markets, stock prices
+                                            ('Home','Home'),                 # e.g. around home including personal finance issues
+                                            ('MZ-Patent','MZ-Patent'),            # in relation to family business
+                                            ('Sustainability','Sustainability'), # e.g. global warming, evs, batteries, demography
+                                            ('Tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
+                                            ('Other','Other')],			    # the rest		
+                                            default='Any')
+
+    stfTags = StringField('Tags')
+
+    sbmFilterOnOff = SubmitField('Filter On/Off')
+
+    sbmApply = SubmitField('do not')
+
+    filter_status_string = 'Filter is off'

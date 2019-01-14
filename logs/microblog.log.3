@@ -1,66 +1,70 @@
-2019-01-12 07:44:09,005 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 07:44:09,132 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 07:44:31,069 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 07:44:31,071 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+2019-01-14 05:13:47,810 INFO: filter on, settings submitted, update filter_settings on to off. type:Contract [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
+2019-01-14 05:13:47,812 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:13:47,812 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:13:47,812 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:13:47,812 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 05:13:47,828 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:13:47,830 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 07:48:27,390 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 07:48:27,390 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 07:48:27,390 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 07:48:38,030 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 07:48:38,032 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:21:23,293 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-14 05:21:23,293 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-14 05:21:23,293 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-14 05:21:27,246 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:21:27,246 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:21:27,247 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:21:27,247 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-14 05:21:27,247 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:21:27,247 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:21:27,248 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:21:27,248 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 05:21:27,270 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:21:27,271 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 07:51:20,646 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 07:51:20,646 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 07:51:20,646 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 07:51:25,235 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 07:51:25,237 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:21:34,179 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:21:34,179 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:21:34,180 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:21:34,180 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:21:34,181 INFO: filter on, settings submitted, update filter_settings on to off. type:News [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
+2019-01-14 05:21:34,181 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:21:34,181 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:21:34,181 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:21:34,181 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 05:21:34,208 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:21:34,209 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 07:54:41,740 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 07:54:41,741 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 07:54:41,741 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 07:54:49,275 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 07:54:49,277 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:34:43,461 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-14 05:34:43,471 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-14 05:34:43,471 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-14 06:09:23,122 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-14 06:09:23,123 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-14 06:09:23,123 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-14 06:09:31,131 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 06:09:31,131 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 06:09:31,132 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 06:09:31,132 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-14 06:09:31,132 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 06:09:31,133 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 06:09:31,133 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 06:09:31,133 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 06:09:31,178 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 06:09:31,180 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:01:19,181 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 08:01:19,182 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 08:01:19,182 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 08:01:26,369 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:01:26,453 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 06:09:33,745 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 06:09:33,746 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 06:09:33,746 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 06:09:33,747 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 06:09:33,747 INFO: Toggle filter from on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:91]
+2019-01-14 06:09:33,747 INFO: after toggle filter at off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:98]
+2019-01-14 06:09:33,747 INFO: filter set to off.default [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:107]
+2019-01-14 06:09:33,747 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 06:09:33,748 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 06:09:33,748 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 06:09:33,748 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 06:09:33,775 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 06:09:33,777 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:03:08,024 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 08:03:08,024 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 08:03:08,025 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 08:03:14,164 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:03:14,166 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:05:12,687 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 08:05:12,688 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 08:05:12,688 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 08:05:21,569 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:05:21,571 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:06:35,619 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 08:06:35,619 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 08:06:35,619 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 08:06:41,568 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:06:41,570 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:09:36,699 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-12 08:09:36,699 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-12 08:09:36,700 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-12 08:09:44,022 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:09:44,023 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-12 08:11:01,504 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-12 08:11:01,506 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]

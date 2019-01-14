@@ -72,8 +72,16 @@ class User(UserMixin, db.Model):
             algorithm='HS256').decode('utf-8')
 
     def get_memories(self):
-        return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False).order_by(Memory.timestamp.desc())
-        
+            return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False).order_by(Memory.timestamp.desc())
+
+    def get_filtered_memories(self, filter_settings):
+        if (filter_settings['type']=='Any') & (filter_settings['category']=='Any'):
+            return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False).order_by(Memory.timestamp.desc())
+        elif (filter_settings['category']=='Any'):
+            return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False, Memory.type==str(filter_settings['type'])).order_by(Memory.timestamp.desc())
+        else:
+            return Memory.query.filter(Memory.user_id==self.id, Memory.dormant==False, Memory.type==str(filter_settings['type']), Memory.category==str(filter_settings['category'])).order_by(Memory.timestamp.desc())
+
     @staticmethod
     def verify_reset_password_token(token):
         try:

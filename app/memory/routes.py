@@ -1,12 +1,14 @@
+# memory
+
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, current_app
+from flask import render_template, flash, redirect, url_for, request, g, current_app, session
 from flask_login import current_user, login_required
 
 from wtforms import StringField, SubmitField
 
 from app import db
 #from app.main.forms import EditProfileForm, PostForm
-from app.memory.forms import NewMemoryForm, EditMemoryForm, ForgetForm
+from app.memory.forms import NewMemoryForm, EditMemoryForm, ForgetForm, MemoryFilterForm
 from app.models import User, Memory, Tag, MemoryTag
 from app.memory import bp
 
@@ -22,13 +24,116 @@ def before_request():
 @bp.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = MemoryFilterForm()
+    current_app.logger.info('enter memory/index route.')
+
+#    flash("Type " + form.slcType.data)
+#    flash("Category " + form.slcCategory.data)
+
+    # if a new session does not have filter settings in place, create else use as is
+        
+#        flash(session['filter_settings'])
+#        flash(session['filter_settings']['type'])
+
+    # work-around for situation where status field does not yet exists
+    try:
+        if session['filter_settings']:
+            pass
+    except KeyError:
+        current_app.logger.info('No filter settings found in session object: create')
+        filter_settings = {}
+        filter_settings['status'] = 'off' 
+        filter_settings['type'] = 'Any'
+        filter_settings['category'] = 'Any'
+        filter_settings['tags'] = None
+        session['filter_settings'] = filter_settings
+        form.filter_status_string = 'Filter is off'
+
+
+    if not session['filter_settings']:
+        current_app.logger.info('No filter settings found in session object: create')
+        filter_settings = {}
+        filter_settings['status'] = 'off' 
+        filter_settings['type'] = 'Any'
+        filter_settings['category'] = 'Any'
+        filter_settings['tags'] = None
+        session['filter_settings'] = filter_settings
+        form.filter_status_string = 'Filter is off'
+    else:
+        filter_settings = session['filter_settings']
+        current_app.logger.info('load filter settings from session. status = ' + filter_settings['status'])
+    
+    # handle the rare case that status is not set
+    try:
+        if not filter_settings['status']:
+            current_app.logger.info('Initialize filter status. set to off')
+            filter_settings['status'] = 'off'
+            form.filter_status_string = 'Filter is off'
+    except (KeyError, UnboundLocalError):
+        current_app.logger.info('Initialize filter status. set to off')
+        filter_settings['status'] = 'off'
+        form.filter_status_string = 'Filter is off'
+        filter_settings['type'] = 'Any'
+        filter_settings['category'] = 'Any'
+        filter_settings['tags'] = None
+        
+    current_app.logger.info('filter status before post logic  is ' + filter_settings['status'])
+    if form.validate_on_submit():
+        current_app.logger.info('SUBMIT DETECTED FROM FORM')
+#        current_app.logger.info(form.slcType.data)
+        # check if toggle button fired
+
+        if form.sbmApply.data:
+            current_app.logger.info('Apply filter')
+            pass                            # nothing to do filter will be applied and data refreshed according to OnOff setting
+
+        if form.sbmFilterOnOff.data:
+            current_app.logger.info('Toggle filter from ' + filter_settings['status'])
+            if filter_settings['status']=='on':
+                filter_settings['status']='off'
+                form.filter_status_string = 'Filter is off'
+            else:
+                filter_settings['status']='on'
+                form.filter_status_string = 'Filter is on'
+            current_app.logger.info('after toggle filter at ' + filter_settings['status'])
+
+        if filter_settings['status'] == 'on':
+            current_app.logger.info('filter on, settings submitted, update filter_settings on to off. type:' + str(form.slcType.data))
+            filter_settings['type'] = form.slcType.data
+            filter_settings['category'] = form.slcCategory.data
+            filter_settings['tags'] = form.stfTags.data
+            session['filter_settings'] = filter_settings
+        else:
+            current_app.logger.info('filter set to off.default')
+            filter_settings['type'] = 'Any'
+            filter_settings['category'] = 'Any'
+            filter_settings['tags'] = None
+        
+    elif request.method=='GET':
+        current_app.logger.info('request.method is GET.')
+        pass
+        # if after session expiry session object does not conatin filter_settings
+
+    current_app.logger.info('session filter status is ' + filter_settings['status'])
+    if filter_settings['status'] == 'off':
+        form.filter_status_string = 'Filter is off'
+    else:
+        form.filter_status_string = 'Filter is on'
+
+    current_app.logger.info('filter toggle button setting: ' + form.filter_status_string) 
+
+#    form.slcType.default = filter_settings['type']
+#    form.slcCategory.default = filter_settings['category']
+#    form.stfTags.default = filter_settings['tags']
 
     page = request.args.get('page', 1, type=int)
-
-    if request.method == 'POST':
-        current_app.logger.info(page.args)
-
-    memories = current_user.get_memories().paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+    current_app.logger.info('filter_status is ' + filter_settings['status']) 
+    if filter_settings['status']=='on':
+        current_app.logger.info('Filter is on, get filtered reults')
+        memories = current_user.get_filtered_memories(filter_settings).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
+    else:
+        current_app.logger.info('Filter is of, get unfiltered reults')
+        memories = current_user.get_memories().paginate(page, current_app.config['POSTS_PER_PAGE'], False)
     
     current_app.logger.info('user is: {}'.format(current_user.username))
     current_app.logger.info('output memories: {}'.format(current_user.get_memories()))
@@ -38,7 +143,8 @@ def index():
     prev_url = url_for('memory.index', page=memories.prev_num) \
         if memories.has_prev else None
 
-    return render_template('memory/index.html', title='Memories',
+    session['filter_settings'] = filter_settings
+    return render_template('memory/index.html', title='Memories', form=form,
                            memories=memories.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -55,14 +161,13 @@ def forget():
         if form.forget.data:
             # forget
             current_app.logger.info('forgotten: {}'.format(request.args.get('id')))
-            flash('this memory is gone')
             memory.dormant=True
             db.session.commit()
-            flash('Memory is forgotten')
+            flash('Forgotten, that is sad')
             return redirect(url_for('memory.index'))
         elif form.keep.data:
             # keep
-            flash('keep this memory')    
+            flash('Keep this memory')    
             return redirect(url_for('memory.index'))
         else:
             current_app.logger.info('this should not happen')
@@ -95,6 +200,7 @@ def edit_profile():
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
 """
+@bp.route('/view', methods=['GET', 'POST'])
 @bp.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():

@@ -4,39 +4,43 @@
 {% block app_content %}
     <a href="{{ url_for('memory.new') }}"><img src="/static/+icon64.png"/></a>
     <hr>
-    <div class="row">
-        <div class="col-md-2">
-            <label for="InputTags">Filter on/off</label><br>
-            <button type="button" class="btn btn-default">Filter is off</button>
+    <form action="" method="post" class="form" role="form">
+       <!-- <input id="csrf_token" name="csrf_token" type="hidden" value="IjQ3MTBjOTNjOTI1OTkzYWY0M2M3N2NkMDkwODNjOTUyNmNlZjUxNWEi.XDngrw.YTyFLs0-3RkyDMknEPxlqLYb6ck">-->
+       {{ form.csrf_token }}
+        <div class="row">
+            <div class="col-md-2">
+                <label for="smbFilterOnOff">Toggle Filter</label><br>
+                <!--<button type="submit" class="btn btn-default" id="smbFilterOnOff" name="smbFilterOnOff">Filter is off</button>-->
+                <input class="btn btn-default" id="sbmFilterOnOff" name="sbmFilterOnOff" type="submit" value="{{ form.filter_status_string }}">
+            </div>
+            <div class="col-md-2">
+                <label for="slcType">Filter by Type</label>
+                <select class="form-control" id="slcType" name="slcType">
+                    {% for i in form.slcType.choices %}{% if i[0]==session['filter_settings']['type'] %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option>{% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="slcCategory">Filter by Category</label>
+                <select class="form-control" id="slcCategory" name="slcCategory">
+                    {% for i in form.slcCategory.choices %}{% if i[0]==session['filter_settings']['category'] %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option>{% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-5">
+                <label for="stfTags">Filter by Tags</label>
+                {% if not session['filter_settings']['tags'] %}
+                    <input type="text" class="form-control" id="stfTags" name="stfTags" placeholder="Enter tags here">
+                {% else %}
+                    <input type="text" class="form-control" id="stfTags" name="stfTags" value="{{ session['filter_settings']['tags'] }}">
+                {% endif %}
+            </div>
+            <div class="col-md-1 center">
+                <label for="sbmApply">Refresh</label>
+                <button type="submit" name="sbmApply" class="btn btn-default", id="sbmApply">Apply</button>
+            </div>
         </div>
-        <div class="col-md-2">
-                <label for="InputTags">Filter by Type</label>
-            <select class="form-control">
-                <option>News</option>
-                <option>Facts</option>
-                <option>UseCases</option>>
-                <option>Any</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-                <label for="InputTags">Filter by Category</label>
-            <select class="form-control">
-                <option>Technology</option>
-                <option>Sustainability</option>
-                <option>Finance</option>
-                <option>Other</option>
-                <option>Any</option>
-            </select>
-        </div>
-        <div class="col-md-5">
-            <label for="InputTags">Filter by Tags</label>
-            <input type="text" class="form-control" id="InputTags" placeholder="Enter tags here">
-        </div>
-        <div class="col-md-1 center">
-                <label for="InputTags">Refresh</label>
-                <a href="#"><span class="glyphicon glyphicon-refresh"></span></a>
-        </div>
-    </div>
+    </form>
     <br>
     {% for memory in memories %}
         {% include 'memory/_mem_item.html' %}

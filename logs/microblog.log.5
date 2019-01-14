@@ -1,102 +1,70 @@
-2019-01-11 20:36:25,704 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-psycopg2.OperationalError: server closed the connection unexpectedly
-	This probably means the server terminated abnormally
-	before or while processing the request.
-
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
-    raise value
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1811, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2087, in preprocess_request
-    rv = func()
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 16, in before_request
-    if current_user.is_authenticated:
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 347, in __getattr__
-    return getattr(self._get_current_object(), name)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/local.py", line 306, in _get_current_object
-    return self.__local()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 26, in <lambda>
-    current_user = LocalProxy(lambda: _get_user())
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 335, in _get_user
-    current_app.login_manager._load_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 359, in _load_user
-    return self.reload_user()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/login_manager.py", line 321, in reload_user
-    user = self.user_callback(user_id)
-  File "/Users/Developer/PycharmProjects/microblog/app/models.py", line 89, in load_user
-    return User.query.get(int(id))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 924, in get
-    ident, loading.load_on_pk_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 1007, in _get_impl
-    return db_load_fn(self, primary_key_identity)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/loading.py", line 250, in load_on_pk_identity
-    return q.one()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2954, in one
-    ret = self.one_or_none()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2924, in one_or_none
-    ret = list(self)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 2995, in __iter__
-    return self._execute_and_instances(context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/orm/query.py", line 3018, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 948, in execute
-    return meth(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 269, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1060, in _execute_clauseelement
-    compiled_sql, distilled_params
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1200, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1413, in _handle_dbapi_exception
-    exc_info
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 265, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/util/compat.py", line 248, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1193, in _execute_context
-    context)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/sqlalchemy/engine/default.py", line 509, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (psycopg2.OperationalError) server closed the connection unexpectedly
-	This probably means the server terminated abnormally
-	before or while processing the request.
- [SQL: 'SELECT "user".id AS user_id, "user".username AS user_username, "user".email AS user_email, "user".password_hash AS user_password_hash, "user".about_me AS user_about_me, "user".last_seen AS user_last_seen \nFROM "user" \nWHERE "user".id = %(param_1)s'] [parameters: {'param_1': 1}] (Background on this error at: http://sqlalche.me/e/e3q8)
-2019-01-11 20:36:58,444 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-11 20:36:58,445 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-11 20:36:58,445 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-11 20:37:29,029 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-11 20:37:29,030 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+2019-01-14 05:12:38,164 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-11 20:42:12,159 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-11 20:42:12,182 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-11 20:42:12,182 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-11 20:43:30,119 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-11 20:43:30,142 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:12:44,322 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:12:44,322 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:12:44,322 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:12:44,323 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:12:44,323 INFO: filter on, settings submitted, update filter_settings on to off. type:Thought [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
+2019-01-14 05:12:44,323 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:12:44,324 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:12:44,324 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:12:44,324 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 05:12:44,340 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:12:44,342 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-11 20:43:30,607 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-11 20:43:30,609 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:12:46,121 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:12:46,121 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:12:46,122 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:12:46,122 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:12:46,122 INFO: Toggle filter from on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:91]
+2019-01-14 05:12:46,122 INFO: after toggle filter at off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:98]
+2019-01-14 05:12:46,123 INFO: filter set to off.default [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:107]
+2019-01-14 05:12:46,123 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:12:46,123 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:12:46,123 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:12:46,124 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:12:46,150 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:12:46,151 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-11 20:43:41,534 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-11 20:43:41,536 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:13:14,706 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:13:14,707 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:13:14,707 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:13:14,708 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:13:14,708 INFO: filter set to off.default [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:107]
+2019-01-14 05:13:14,708 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:13:14,708 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:13:14,708 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:13:14,709 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:13:14,733 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:13:14,734 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-11 20:49:28,230 INFO: forgotten: 46 [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:57]
-2019-01-11 20:49:28,356 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:13:16,159 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:13:16,159 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:13:16,160 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:13:16,160 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:13:16,160 INFO: filter set to off.default [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:107]
+2019-01-14 05:13:16,160 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:13:16,161 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:13:16,161 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:13:16,161 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:13:16,186 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:13:16,188 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:13:17,399 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:13:17,399 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:13:17,400 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:13:17,400 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:13:17,400 INFO: filter set to off.default [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:107]
+2019-01-14 05:13:17,401 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:13:17,401 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:13:17,401 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:13:17,401 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:13:17,425 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:13:17,426 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]

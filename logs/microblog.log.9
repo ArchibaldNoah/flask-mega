@@ -1,4 +1,4 @@
-2019-01-10 09:17:39,896 ERROR: Exception on /index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-14 05:09:17,316 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,7 +14,7 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 42, in index
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 149, in index
     prev_url=prev_url)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
     context, ctx.app)
@@ -28,11 +28,7 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/_post.html", line 15, in template
-    {{ '{} said {}'.format(user_link, moment(post.timestamp).fromNow() }}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1005, in render
-    return concat(self.root_render_func(self.new_context(vars)))
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 2, in top-level template code
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
     {% import 'bootstrap/wtf.html' as wtf %}
   File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -46,80 +42,53 @@ Traceback (most recent call last):
     {% block content -%}
   File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/index.html", line 11, in block "app_content"
-    {% include '_post.html' %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 46, in block "app_content"
+    {% include 'memory/_mem_item.html' %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 29, in top-level template code
+    <a class="btn btn-default btn-lg" href="{{ url_for('memory.view')+'?id={}'.format(memory.id) }}" role="button" title="view">v</a>
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
     reraise(exc_type, exc_value, tb)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/_post.html", line 15, in template
-    {{ '{} said {}'.format(user_link, moment(post.timestamp).fromNow() }}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 875, in subparse
-    add_data(self.parse_tuple(with_condexpr=True))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 620, in parse_tuple
-    args.append(parse())
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 547, in parse_unary
-    node = self.parse_postfix(node)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 676, in parse_postfix
-    node = self.parse_call(node)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 790, in parse_call
-    args.append(self.parse_expression())
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 432, in parse_expression
-    return self.parse_condexpr()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 437, in parse_condexpr
-    expr1 = self.parse_or()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 450, in parse_or
-    left = self.parse_and()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 459, in parse_and
-    left = self.parse_not()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 470, in parse_not
-    return self.parse_compare()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 474, in parse_compare
-    expr = self.parse_math1()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 496, in parse_math1
-    left = self.parse_concat()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 507, in parse_concat
-    args = [self.parse_math2()]
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 517, in parse_math2
-    left = self.parse_pow()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 528, in parse_pow
-    left = self.parse_unary()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 547, in parse_unary
-    node = self.parse_postfix(node)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 676, in parse_postfix
-    node = self.parse_call(node)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 793, in parse_call
-    self.stream.expect('rparen')
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/lexer.py", line 388, in expect
-    next(self)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/lexer.py", line 359, in __next__
-    self.current = next(self._iter)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/lexer.py", line 562, in wrap
-    for lineno, token, value in stream:
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/lexer.py", line 690, in tokeniter
-    filename)
-jinja2.exceptions.TemplateSyntaxError: unexpected '}', expected ')'
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'memory.view'. Did you mean 'memory.new' instead?
+2019-01-14 05:10:39,090 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-14 05:10:39,091 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-14 05:10:39,091 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-14 05:10:45,741 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:10:45,742 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:10:45,742 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:10:45,743 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-14 05:10:45,743 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:10:45,743 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:10:45,744 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:10:45,744 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:10:45,779 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:10:45,780 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:10:48,839 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:10:48,952 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:10:48,953 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:10:48,953 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:10:48,954 INFO: Toggle filter from off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:91]
+2019-01-14 05:10:48,954 INFO: after toggle filter at on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:98]
+2019-01-14 05:10:48,954 INFO: filter on, settings submitted, update filter_settings on to off. type:Any [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
+2019-01-14 05:10:48,955 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:10:48,955 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:10:48,955 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:10:48,955 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
+2019-01-14 05:10:48,987 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:10:48,989 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+FROM memory 
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
+2019-01-14 05:11:23,505 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:11:23,505 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:11:23,505 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:11:23,505 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
+2019-01-14 05:11:23,506 INFO: filter on, settings submitted, update filter_settings on to off. type:News [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]

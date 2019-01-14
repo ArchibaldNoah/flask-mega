@@ -1,4 +1,4 @@
-2019-01-10 07:03:11,142 ERROR: Exception on /user/juergen/popup [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+2019-01-14 05:07:30,923 ERROR: Exception on /memory/index [GET] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
 Traceback (most recent call last):
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,63 +14,61 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/Developer/PycharmProjects/microblog/app/main/routes.py", line 79, in user_popup
-    return render_template('user_popup.html', user=user)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/loaders.py", line 125, in load
-    code = environment.compile(source, name, filename)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 591, in compile
-    self.handle_exception(exc_info, source_hint=source_hint)
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 149, in index
+    prev_url=prev_url)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 135, in render_template
+    context, ctx.app)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/templating.py", line 117, in _render
+    rv = template.render(context)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
   File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "/Users/Developer/PycharmProjects/microblog/app/templates/user_popup.html", line 34, in template
-    {% endif %}
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/environment.py", line 497, in _parse
-    return Parser(self, source, name, encode_filename(filename)).parse()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 901, in parse
-    result = nodes.Template(self.subparse(), lineno=1)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 130, in parse_statement
-    return getattr(self, 'parse_' + self.stream.current.value)()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 268, in parse_block
-    node.body = self.parse_statements(('name:endblock',), drop_needle=True)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 165, in parse_statements
-    result = self.subparse(end_tokens)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 883, in subparse
-    rv = self.parse_statement()
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 144, in parse_statement
-    self.fail_unknown_tag(token.value, token.lineno)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 97, in fail_unknown_tag
-    return self._fail_ut_eof(name, self._end_token_stack, lineno)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 90, in _fail_ut_eof
-    self.fail(' '.join(message), lineno)
-  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/jinja2/parser.py", line 59, in fail
-    raise exc(msg, lineno, self.name, self.filename)
-jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
-2019-01-10 07:04:57,486 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-10 07:04:57,487 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-10 07:04:57,487 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-10 08:53:18,592 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-10 08:53:18,600 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-10 08:53:18,600 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-10 08:53:39,454 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-10 08:53:39,456 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/base.html", line 49, in block "content"
+    {% block app_content %}{% endblock %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/index.html", line 46, in block "app_content"
+    {% include 'memory/_mem_item.html' %}
+  File "/Users/Developer/PycharmProjects/microblog/app/templates/memory/_mem_item.html", line 29, in top-level template code
+    <a class="btn btn-default btn-lg" href="{{ url_for('memory.view')+'?id={}'.format(memory.id) }}" role="button" title="view">v</a>
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2061, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/helpers.py", line 345, in url_for
+    force_external=external)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/werkzeug/routing.py", line 1776, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'memory.view'. Did you mean 'memory.new' instead?
+2019-01-14 05:09:12,715 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-14 05:09:12,716 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-14 05:09:12,716 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-14 05:09:17,138 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-14 05:09:17,138 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-14 05:09:17,139 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-14 05:09:17,139 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-14 05:09:17,139 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-14 05:09:17,139 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-14 05:09:17,140 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-14 05:09:17,140 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-14 05:09:17,166 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-14 05:09:17,167 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
-2019-01-10 09:17:17,826 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-10 09:17:17,827 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-10 09:17:17,827 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-10 09:17:36,348 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:33]
-2019-01-10 09:17:36,349 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:34]
+WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]

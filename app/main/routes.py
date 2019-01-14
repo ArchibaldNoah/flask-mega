@@ -1,3 +1,6 @@
+# main blueprint containing the microblog components
+# path: main/routes
+
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, \
     jsonify, current_app
@@ -25,7 +28,7 @@ def before_request():
 def index():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.postX.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')

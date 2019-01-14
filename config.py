@@ -20,6 +20,31 @@ class Config(object):
 	ADMINS=['dr.juergen.brust@gmail.com']
 
 #   DOCUMENTS
-	DOCUMENTS={"account" :{"01" : "username","02" : "password"},
-               "contract" : {"01" : "counterparty","02" : "contract_type","03" : "contract_start_date","04" : "contract_end_date"}
+	DOCUMENTS={"i_account" : 	{	# internet accounts, logins
+									"k01" : {"key" : "site","label" : "Site"},
+									"k03" : {"key" : "username","label" : "Username"},
+									"k04" : {"key" : "password","label" : "Password"}
+						   		},
+               "contract" : 	{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "counterparty","label" : "Counterparty"}, # ideally use data from exchange
+									"k02" : {"key" : "contract_id","label" : "Contract ID"},
+									"k03" : {"key" : "contract_type","label" : "Contract Type"},
+									"k04" : {"key" : "contract_start_date","label" : "Contract Start Date"},
+									"k05" : {"key" : "contract_end_date","label" : "Contract End Date"}
+								},
+               "news" : 		{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "source","label" : "Source"},
+									"k02" : {"key" : "url","label" : "Source URL"},
+									"k03" : {"key" : "publication_date","label" : "Publication Date"}
+								}
 			  }
+
+	CONTRACT_TYPES = 	{
+							"credit" : "Credit Contract",
+							"insurance" : "Insurance Contract",
+							"purchase" : "Purchase Contract",
+							"rent" : "Rent Contract",
+							"sale" : "Sales Contract",
+							"service_provided" : "Contract for Services Provided",
+							"service_taken" : "Contract for Services Purchased"
+						}
