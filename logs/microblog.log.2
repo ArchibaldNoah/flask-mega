@@ -1,70 +1,76 @@
-2019-01-14 06:09:39,198 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
-2019-01-14 06:09:39,414 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
-2019-01-14 06:09:39,415 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
-2019-01-14 06:09:39,415 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
-2019-01-14 06:09:39,416 INFO: Toggle filter from off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:91]
-2019-01-14 06:09:39,416 INFO: after toggle filter at on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:98]
-2019-01-14 06:09:39,416 INFO: filter on, settings submitted, update filter_settings on to off. type:iAccount [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
-2019-01-14 06:09:39,417 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
-2019-01-14 06:09:39,417 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
-2019-01-14 06:09:39,417 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
-2019-01-14 06:09:39,418 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
-2019-01-14 06:09:39,437 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
-2019-01-14 06:09:39,439 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+2019-01-18 06:22:50,938 INFO: create new memory of type news [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:272]
+2019-01-18 06:22:50,940 INFO: load memory structure for news, found {'k01': {'key': 'source', 'label': 'Source'}, 'k02': {'key': 'source_url', 'label': 'Source URL'}, 'k03': {'key': 'publication_date', 'label': 'Publication Date'}} [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:281]
+2019-01-18 06:22:50,941 INFO: contains: source [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:22:50,941 INFO: contains: source_url [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:22:50,941 INFO: contains: publication_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:22:50,943 INFO: looking for posts: <Request 'http://127.0.0.1:5000/memory/new' [POST]> [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:302]
+2019-01-18 06:22:50,944 INFO: Apply filter. Set type to iaccount [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:309]
+2019-01-18 06:22:50,944 ERROR: Exception on /memory/new [POST] [in /Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py:1761]
+Traceback (most recent call last):
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/_compat.py", line 35, in reraise
+    raise value
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/Developer/PycharmProjects/microblog/venv/lib/python3.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/Developer/PycharmProjects/microblog/app/memory/routes.py", line 312, in new
+    prescription = current_app.config['DOCUMENTS'][session['filter_settings']['type']]
+KeyError: 'iaccount'
+2019-01-18 06:24:36,720 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-18 06:24:36,720 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-18 06:24:36,721 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-18 06:24:36,721 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-18 06:24:36,721 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-18 06:24:36,721 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-18 06:24:36,722 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-18 06:24:36,722 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-18 06:24:36,753 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-18 06:24:36,754 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
 WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
-2019-01-14 06:09:43,259 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
-2019-01-14 06:09:43,259 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
-2019-01-14 06:09:43,260 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
-2019-01-14 06:09:43,260 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
-2019-01-14 06:09:43,260 INFO: filter on, settings submitted, update filter_settings on to off. type:iAccount [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
-2019-01-14 06:09:43,260 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
-2019-01-14 06:09:43,261 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
-2019-01-14 06:09:43,261 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
-2019-01-14 06:09:43,261 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
-2019-01-14 06:09:43,277 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
-2019-01-14 06:09:43,279 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
+2019-01-18 06:24:39,980 INFO: create new memory of type news [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:272]
+2019-01-18 06:24:39,981 INFO: load memory structure for news, found {'k01': {'key': 'source', 'label': 'Source'}, 'k02': {'key': 'source_url', 'label': 'Source URL'}, 'k03': {'key': 'publication_date', 'label': 'Publication Date'}} [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:281]
+2019-01-18 06:24:39,981 INFO: contains: source [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:39,981 INFO: contains: source_url [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:39,982 INFO: contains: publication_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:39,983 INFO: looking for posts: <Request 'http://127.0.0.1:5000/memory/new' [GET]> [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:302]
+2019-01-18 06:24:46,571 INFO: create new memory of type news [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:272]
+2019-01-18 06:24:46,572 INFO: load memory structure for news, found {'k01': {'key': 'source', 'label': 'Source'}, 'k02': {'key': 'source_url', 'label': 'Source URL'}, 'k03': {'key': 'publication_date', 'label': 'Publication Date'}} [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:281]
+2019-01-18 06:24:46,572 INFO: contains: source [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:46,572 INFO: contains: source_url [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:46,573 INFO: contains: publication_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:24:46,575 INFO: looking for posts: <Request 'http://127.0.0.1:5000/memory/new' [POST]> [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:302]
+2019-01-18 06:24:46,575 INFO: Apply filter. Set type to contract [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:309]
+2019-01-18 06:24:46,575 INFO: contains: counterparty [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:317]
+2019-01-18 06:24:46,576 INFO: contains: contract_id [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:317]
+2019-01-18 06:24:46,576 INFO: contains: contract_type [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:317]
+2019-01-18 06:24:46,576 INFO: contains: contract_start_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:317]
+2019-01-18 06:24:46,577 INFO: contains: contract_end_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:317]
+2019-01-18 06:26:13,789 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
+2019-01-18 06:26:13,789 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
+2019-01-18 06:26:13,790 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
+2019-01-18 06:26:19,528 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-18 06:26:19,529 INFO: load filter settings from session. status = off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
+2019-01-18 06:26:19,529 INFO: filter status before post logic  is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
+2019-01-18 06:26:19,529 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
+2019-01-18 06:26:19,530 INFO: session filter status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
+2019-01-18 06:26:19,530 INFO: filter toggle button setting: Filter is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
+2019-01-18 06:26:19,530 INFO: filter_status is off [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
+2019-01-18 06:26:19,531 INFO: Filter is of, get unfiltered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:135]
+2019-01-18 06:26:19,564 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
+2019-01-18 06:26:19,566 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
 FROM memory 
 WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
-2019-01-14 06:09:51,042 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
-2019-01-14 06:09:51,043 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
-2019-01-14 06:09:51,043 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
-2019-01-14 06:09:51,043 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
-2019-01-14 06:09:51,044 INFO: filter on, settings submitted, update filter_settings on to off. type:News [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
-2019-01-14 06:09:51,044 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
-2019-01-14 06:09:51,044 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
-2019-01-14 06:09:51,045 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
-2019-01-14 06:09:51,045 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
-2019-01-14 06:09:51,060 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
-2019-01-14 06:09:51,062 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
-2019-01-14 06:13:20,556 INFO: Microblog startup [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:79]
-2019-01-14 06:13:20,556 INFO: Configured MAIL SERVER: smtp.gmail.com on PORT: 587 [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:80]
-2019-01-14 06:13:20,556 INFO: Configured USER and PASSWORD: dr.juergen.brust@gmail.com, SECRET [in /Users/Developer/PycharmProjects/microblog/app/__init__.py:81]
-2019-01-14 06:13:25,633 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
-2019-01-14 06:13:25,634 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
-2019-01-14 06:13:25,634 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
-2019-01-14 06:13:25,634 INFO: request.method is GET. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:113]
-2019-01-14 06:13:25,635 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
-2019-01-14 06:13:25,635 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
-2019-01-14 06:13:25,635 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
-2019-01-14 06:13:25,635 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
-2019-01-14 06:13:25,669 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
-2019-01-14 06:13:25,671 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
-2019-01-14 06:13:33,307 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
-2019-01-14 06:13:33,307 INFO: load filter settings from session. status = on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:64]
-2019-01-14 06:13:33,307 INFO: filter status before post logic  is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:80]
-2019-01-14 06:13:33,308 INFO: SUBMIT DETECTED FROM FORM [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:82]
-2019-01-14 06:13:33,308 INFO: filter on, settings submitted, update filter_settings on to off. type:News [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:101]
-2019-01-14 06:13:33,308 INFO: session filter status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:117]
-2019-01-14 06:13:33,309 INFO: filter toggle button setting: Filter is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:123]
-2019-01-14 06:13:33,309 INFO: filter_status is on [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:130]
-2019-01-14 06:13:33,309 INFO: Filter is on, get filtered reults [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:132]
-2019-01-14 06:13:33,325 INFO: user is: juergen [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:138]
-2019-01-14 06:13:33,327 INFO: output memories: SELECT memory.id AS memory_id, memory.timestamp AS memory_timestamp, memory.memorized AS memory_memorized, memory.user_id AS memory_user_id, memory.type AS memory_type, memory.category AS memory_category, memory.abstract AS memory_abstract, memory.doc AS memory_doc, memory.dormant AS memory_dormant 
-FROM memory 
-WHERE memory.user_id = %(user_id_1)s AND memory.dormant = false ORDER BY memory.timestamp DESC [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:139]
-2019-01-14 06:13:41,675 INFO: enter memory/index route. [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:28]
+2019-01-18 06:26:21,141 INFO: create new memory of type news [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:272]
+2019-01-18 06:26:21,141 INFO: load memory structure for news, found {'k01': {'key': 'source', 'label': 'Source'}, 'k02': {'key': 'source_url', 'label': 'Source URL'}, 'k03': {'key': 'publication_date', 'label': 'Publication Date'}} [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:281]
+2019-01-18 06:26:21,142 INFO: contains: source [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:26:21,142 INFO: contains: source_url [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]
+2019-01-18 06:26:21,142 INFO: contains: publication_date [in /Users/Developer/PycharmProjects/microblog/app/memory/routes.py:288]

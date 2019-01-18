@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% import 'bootstrap/wtf.html' as wtf %}
 
+<!-- {{ url_for('memory.view')+'?id={}'.format(memory.id) }} +'?type={}'.format(session['filter_settings']['type'].lower()-->
 {% block app_content %}
     <a href="{{ url_for('memory.new') }}"><img src="/static/+icon64.png"/></a>
     <hr>
@@ -14,7 +15,7 @@
                 <input class="btn btn-default" id="sbmFilterOnOff" name="sbmFilterOnOff" type="submit" value="{{ form.filter_status_string }}">
             </div>
             <div class="col-md-2">
-                <label for="slcType">Filter by Type</label>
+                <label for="slcType">Filter by Type </label>
                 <select class="form-control" id="slcType" name="slcType">
                     {% for i in form.slcType.choices %}{% if i[0]==session['filter_settings']['type'] %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option>{% endif %}
                     {% endfor %}

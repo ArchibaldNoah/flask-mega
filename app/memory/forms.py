@@ -7,21 +7,23 @@ from app.models import User, Memory, Tag, MemoryTag
 
 class NewMemoryForm(FlaskForm):
 
-    type = SelectField('Type', choices=[('iAccount','Internet Account'),      # internet konto informationen, e.g. Moodys
-                                          ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
-                                          ('Contract','Contract'),  # contract with another entity/person, receivables, payables
-                                          ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
-                                          ('News','News'),		    # news
-                                          ('Payable','Payable'),    # empfangene Rechnungen
-                                          ('Payment','Payment'),    # payments made and payments received
-                                          ('Publication','Publication'),# documents worth reading
-                                          ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
-                                          ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
-                                          ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
-                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
+    memorize = SubmitField("Memorize")
+    reselect = SubmitField("Reselect Filter")
+    slcType = SelectField('Type', choices=[('iAccount','Internet Account'),        # internet konto informationen, e.g. Moodys
+                                          ('Citation','Citation'),              # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),              # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	            # facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		                # news
+                                          ('Payable','Payable'),                # empfangene Rechnungen
+                                          ('Payment','Payment'),                # payments made and payments received
+                                          ('Publication','Publication'),        # documents worth reading
+                                          ('Receivable','Receivable'),          # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),	                # personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	            # what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	            # usecases worth remembering, e.g. big data use cases
                                           default='news')
 
-    category = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
+    slcCategory = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
                                             ('Finance','Finance'),		    # e.g. markets, stock prices
                                             ('Home','Home'),                 # e.g. around home including personal finance issues
                                             ('MZ-Patent','MZ-Patent'),            # in relation to family business
@@ -29,9 +31,15 @@ class NewMemoryForm(FlaskForm):
                                             ('Tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
                                             ('Other','Other')])			    # the rest
 
-    abstract = TextAreaField('Abstract', validators=[DataRequired(), Length(min=1,max=256)])
+    tafAbstract = TextAreaField('Abstract', validators=[DataRequired(), Length(min=1,max=256)])
     
-    tags = StringField('Tags', validators=[DataRequired()])
+    strTags = StringField('Tags', validators=[DataRequired()])
+
+    sbmApplyFilter = SubmitField('Apply Filter')
+
+    sbmBack = SubmitField('Back')
+
+    sbmMemorize = SubmitField('Memorize')
 
 class EditMemoryForm(FlaskForm):
     id = StringField('id', render_kw={'readonly': True})

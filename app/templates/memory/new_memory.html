@@ -2,10 +2,59 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>{{ 'Ingest' }}</h1>
-    <div class="row">
-        <div class="col-md-4">
-            {{ wtf.quick_form(form) }}
+    <h1>{{ 'New Memory' }}</h1>
+    <hr>
+    <form action method="post" class="form" role="form" >
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="col-md-2">
+                <input class="btn btn-primary" id="sbmMemorize" name="sbmMemorize" type="submit" value="Remember">
+            </div>
+            <div class="col-md-2">
+                <input class="btn btn-primary" id="sbmApplyFilter" name="sbmApplyFilter" type="submit" value="Reset Filter">
+            </div>
+            <div class="col-md-2">
+                <input class="btn btn-primary" id="sbmBack" name="sbmBack" type="submit" value="Forget it">
+            </div>
         </div>
-    </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="slcType">Select Type</label>
+                <select class="form-control" id="slcType" name="slcType">
+                {% for i in form.slcType.choices %}{% if i[0]==session['filter_settings']['type'].title() %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option><br>{% endif %}
+                {% endfor %}
+                </select>
+            <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="slcCategory">Select Category</label>
+                <select class="form-control" id="slcCategory" name="slcCategory">
+                    {% for i in form.slcCategory.choices %}{% if i[0]==session['filter_settings']['category'].title() %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option><br>{% endif %}
+                    {% endfor %}
+                </select>
+            <br>
+            </div>
+        </div>
+        <!-- Abstract -->
+        <div class="row">
+                <div class="col-md-6"><label for="Abstract">Abstract</label><br><input type="text" class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here"><br>
+                </div>            
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label for="Tags">Tags</label><br><input type="text" class="form-control" id="strTags" name="strTags" placeholder="Enter tags here"><br>
+            </div>
+        </div>
+        {% for item in fields.keys() %}
+                <div class="row">
+                    <div class="col-md-6">
+                    <label> {{ fields[item]['label'] }} </label>
+                    <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}">
+                    <br>
+                    </div>
+                </div>
+        {% endfor %}
+    </form>
 {% endblock %}

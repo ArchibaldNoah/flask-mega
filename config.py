@@ -20,11 +20,14 @@ class Config(object):
 	ADMINS=['dr.juergen.brust@gmail.com']
 
 #   DOCUMENTS
-	DOCUMENTS={"i_account" : 	{	# internet accounts, logins
+	DOCUMENTS={"iaccount" : 	{	# internet accounts, logins
 									"k01" : {"key" : "site","label" : "Site"},
-									"k03" : {"key" : "username","label" : "Username"},
-									"k04" : {"key" : "password","label" : "Password"}
+									"k02" : {"key" : "username","label" : "Username"},
+									"k03" : {"key" : "password","label" : "Password"}
 						   		},
+               "fact" : 		{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "source","label" : "Source"}
+			   },
                "contract" : 	{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "counterparty","label" : "Counterparty"}, # ideally use data from exchange
 									"k02" : {"key" : "contract_id","label" : "Contract ID"},
@@ -32,12 +35,55 @@ class Config(object):
 									"k04" : {"key" : "contract_start_date","label" : "Contract Start Date"},
 									"k05" : {"key" : "contract_end_date","label" : "Contract End Date"}
 								},
+               "fact" : 		{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "source","label" : "Source"},
+									"k02" : {"key" : "source_url","label" : "Source URL"},
+									"k03" : {"key" : "reference_date","label" : "Reference Date"},		# date the fact refers to eg Population Desity as of 1.1.1900
+									"k04" : {"key" : "publication_date","label" : "Publication Date"}
+								},
                "news" : 		{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "source","label" : "Source"},
-									"k02" : {"key" : "url","label" : "Source URL"},
+									"k02" : {"key" : "source_url","label" : "Source URL"},
 									"k03" : {"key" : "publication_date","label" : "Publication Date"}
+								},
+				"payable" : 	{	# any payable also arising out of contracts
+									"k01" : {"key" : "recipient","label" : "Recepient"},
+									"k02" : {"key" : "recipient_id","label" : "Recepient ID"},  # Personennummer
+									"k03" : {"key" : "contract_id","label" : "Contract ID"},	# e.g. Aktenkennzeichen bei MZ
+									"k04" : {"key" : "invoice_id","label" : "Invoice No."},		# Rechnungsnummer der Eingangsrechnung, sofern erforderlich
+									"k05" : {"key" : "amount","label" : "Payment Amount"},
+									"k06" : {"key" : "due_date","label" : "Payment Due Date"}
+								},
+				"payment" : 	{	# any any payment recorded e.g. at bank account, credit incoming, debit outgoing
+									"k01" : {"key" : "counterparty","label" : "Counterparty"},
+									"k02" : {"key" : "payment type","label" : "Debit or Credit"},
+									"k03" : {"key" : "amount","label" : "Payment Amount"},
+									"k04" : {"key" : "payment_date_date","label" : "Payment Due Date"},
+									"k05" : {"key" : "payment_id","label" : "Payment ID"},		# unique payment identifier
+									"k06" : {"key" : "contract_id","label" : "Contract ID"},	# e.g. Aktenkennzeichen bei MZ
+									"k07" : {"key" : "invoice_id","label" : "Invoice No."}		# Rechnungsnummer der Eingangsrechnung, sofern erforderlich
+								},
+				"publication" : {	# any any payment recorded e.g. at bank account, credit incoming, debit outgoing
+									"k01" : {"key" : "source","label" : "Source"},
+									"k02" : {"key" : "source_url","label" : "Source URL"},
+									"k03" : {"key" : "publication_date","label" : "Publication Date"}
+								},
+				"receivable" : 	{	# any payable also arising out of contracts
+									"k01" : {"key" : "debtor","label" : "Debtor"},
+									"k02" : {"key" : "debtor_id","label" : "Debtor ID"},
+									"k03" : {"key" : "contract_id","label" : "Contract ID"},
+									"k04" : {"key" : "invoice_id","label" : "Invoice No."},		# Ausgangsrechnung, wenn vorhanden
+									"k05" : {"key" : "amount","label" : "Receivable Amount"},	# Forderungssbetrag
+									"k06" : {"key" : "due_date","label" : "Payment Due Date"}
+								},
+               "usecase" : 		{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "source","label" : "Source"},
+									"k02" : {"key" : "source_url","label" : "Source URL"},
+									"k03" : {"key" : "reference_date","label" : "Reference Date"},		# date the fact refers to eg Population Desity as of 1.1.1900
+									"k04" : {"key" : "publication_date","label" : "Publication Date"}
 								}
 			  }
+
 
 	CONTRACT_TYPES = 	{
 							"credit" : "Credit Contract",
