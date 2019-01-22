@@ -26,7 +26,7 @@
 		</td>
 		<td width=64px>
 			<!-- <a title='edit' href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}"><img src="/static/Eicon64.png"/></a> --->
-			<a class="btn btn-default btn-lg" href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}" role="button" title="view">v</a>
+			<a class="btn btn-default btn-lg" href="{{ url_for('memory.view')+'?id={}'.format(memory.id) }}" role="button" title="view">v</a>
 		</td>
 		<td width=64px>
 			<!-- <a title='edit' href="{{ url_for('memory.edit')+'?id={}'.format(memory.id) }}"><img src="/static/Eicon64.png"/></a> --->
@@ -34,7 +34,7 @@
         </td>
         <td width=64px>
 			<!-- <a title='forget' href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}"><img src="/static/-icon64.png"/></a> --->
-			<a class="btn btn-default btn-lg" href="{{ url_for('memory.forget')+'?id={}'.format(memory.id) }}" role="button" title="delete">-</a>
+			<a class="btn btn-default btn-lg" href="{{ url_for('memory.delete')+'?id={}'.format(memory.id) }}" role="button" title="delete">-</a>
 		
 		</td>
 	</tr>

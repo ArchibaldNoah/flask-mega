@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>{{ 'View Memory' }}</h1>
+    <hr>
+    <form action method="post" class="form" role="form" >
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="col-md-2">
+                <input class="btn btn-primary" id="sbmBack" name="sbmBack" type="submit" value="I will keep this">
+            </div>
+            <!-- only need this on forget form
+            <div class="col-md-2">
+                    <input class="btn btn-primary" id="sbmForget" name="sbmForget" type="submit" value="Forget, really ?">
+                </div>
+            -->
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="slcType">Memory Type</label>
+                <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.type }}" readonly>
+            <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="slcCategory">Memory Category</label>
+                <input class="form-control form-control-lg" type="text" id="slcCategory" name="slcCategory" value="{{ memory.category }}" readonly>
+            <br>
+            </div>
+        </div>
+        <!-- Abstract -->
+        <div class="row">
+                <div class="col-md-6">
+                    <label for="Abstract">What it is about</label>
+                    <input type="text" class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here" readonly><br>
+                </div>            
+        </div>
+        <!-- Tags -->
+        <div class="row">
+            <div class="col-md-6">
+                <label for="Tags">Tags</label><br>
+                <input type="text" class="form-control" id="strTags" name="strTags" placeholder="There should be tags here ... it's important" readonly><br>
+            </div>
+        </div>
+        {% for item in fields.keys() %}
+                <div class="row">
+                    <div class="col-md-6">
+                    <label> {{ fields[item]['label'] }} </label>
+                    <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}" readonly>
+                    <br>
+                    </div>
+                </div>
+        {% endfor %}
+    </form>
+{% endblock %}

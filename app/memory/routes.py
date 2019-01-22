@@ -8,7 +8,7 @@ from wtforms import StringField, SubmitField
 
 from app import db
 #from app.main.forms import EditProfileForm, PostForm
-from app.memory.forms import NewMemoryForm, EditMemoryForm, ForgetForm, MemoryFilterForm
+from app.memory.forms import NewMemoryForm, EditMemoryForm, ForgetForm, MemoryFilterForm, ViewDeleteMemoryForm
 from app.models import User, Memory, Tag, MemoryTag
 from app.memory import bp
 
@@ -84,8 +84,8 @@ def index():
         # check if toggle button fired
 
         if form.sbmApply.data:
-            current_app.logger.info('Apply filter')
-            pass                            # nothing to do filter will be applied and data refreshed according to OnOff setting
+            current_app.logger.info('>>>>> Apply filter: {}'.format(filter_settings))
+            # nothing to do filter will be applied and data refreshed according to OnOff setting
 
         if form.sbmFilterOnOff.data:
             current_app.logger.info('Toggle filter from ' + filter_settings['status'])
@@ -99,9 +99,11 @@ def index():
 
         if filter_settings['status'] == 'on':
             current_app.logger.info('filter on, settings submitted, update filter_settings on to off. type:' + str(form.slcType.data))
+            current_app.logger.info('apply filter: {}'.format(filter_settings))
             filter_settings['type'] = form.slcType.data
             filter_settings['category'] = form.slcCategory.data
             filter_settings['tags'] = form.stfTags.data
+            filter_settings['tag_list'] = form.stfTags.data.replace(' ','').replace(';',',').split(',')
             session['filter_settings'] = filter_settings
         else:
             current_app.logger.info('filter set to off.default')
@@ -129,7 +131,7 @@ def index():
     page = request.args.get('page', 1, type=int)
     current_app.logger.info('filter_status is ' + filter_settings['status']) 
     if filter_settings['status']=='on':
-        current_app.logger.info('Filter is on, get filtered reults')
+        current_app.logger.info('Filter is on, get filtered reults for filter settings: {}'.format(filter_settings))
         memories = current_user.get_filtered_memories(filter_settings).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
     else:
         current_app.logger.info('Filter is of, get unfiltered reults')
@@ -148,7 +150,7 @@ def index():
                            memories=memories.items, next_url=next_url,
                            prev_url=prev_url)
 
-
+# view to remove an item from memory
 @bp.route('/forget', methods=['GET', 'POST'])
 @login_required
 def forget():
@@ -183,8 +185,7 @@ def forget():
 
     return render_template('memory/forget.html', title='Forget or not forget', form=form, memory=memory)
 
-
-@bp.route('/view', methods=['GET'])
+# viet to edit a memory item
 @bp.route('/edit', methods=['GET', 'POST'])
 @login_required
 def edit():
@@ -257,6 +258,7 @@ def edit():
     return render_template('memory/edit_memory.html', title='Remember and Rethink', form=form, memory=memory)
 
 
+# view to create  a new memory item
 @bp.route('/new', methods=['GET', 'POST'])
 @login_required
 def new():
@@ -265,27 +267,30 @@ def new():
     # 
     # add attributes from the doc portion of the memories
     # 1. find the type of memory which has to created
-    # get type from args
+    # get type from session
     filter_settings = session['filter_settings']
+    if session.get('type'):
+        current_app.logger.info('>>> extra type info: {}'.format(session.get('type')))
+
 
     memory_type = filter_settings['type'].lower()
-    current_app.logger.info('create new memory of type {}'.format(memory_type))
+    current_app.logger.info('new view: create new memory of type {}'.format(memory_type))
 
     # 2. get the dictionary with the definition of the various document types. If 'any' set to news as default
     if memory_type == 'any':
-        current_app.logger.info('memory type any detected, set to news/Any, update filter settings accordingly')
+        current_app.logger.info('new view: set to news/Any, update filter settings accordingly')
         memory_type = 'news'
         filter_settings['type'] = 'News'
         filter_settings['category'] = 'Any'
     prescription = current_app.config['DOCUMENTS'][memory_type]
-    current_app.logger.info('load memory structure for {}, found {}'.format(memory_type,prescription))
+    current_app.logger.info('new view: load memory structure for {}, found {}'.format(memory_type,prescription))
 
     class TmpMemoryForm(NewMemoryForm):
         pass
 
     # 3. iterate through the prescription and add fields accordingly [JB: Performance Issues?]
     for item in prescription.keys():
-        current_app.logger.info('contains: {}'.format(prescription[item]['key']))
+        current_app.logger.info('new view: contains: {}'.format(prescription[item]['key']))
         if prescription.get('field_type') is None:
             setattr(TmpMemoryForm, prescription[item]['key'], StringField(prescription[item]['label']))
 
@@ -299,33 +304,44 @@ def new():
 
     jsondoc={}
     
-    current_app.logger.info('looking for posts: {}'.format(request))
+    current_app.logger.info('new view: looking for post requests: {}'.format(request))
     if (request.method == "POST") & (form.sbmBack.data):
             current_app.logger.info('Back button pressed.')
             return redirect(url_for('memory.index'))
 
+    # re-create form when type hase changed
     if (request.method == "POST") & (form.sbmApplyFilter.data):
             session['filter_settings']['type'] = form.slcType.data.lower()
-            current_app.logger.info('Apply filter. Set type to {}'.format(session['filter_settings']['type']))
-            
+            current_app.logger.info('new view: Apply filter. Set type to {}'.format(session['filter_settings']['type']))
+
             # recreate form
+            current_app.logger.info('new view: available documents: {}'.format(current_app.config['DOCUMENTS']))
             prescription = current_app.config['DOCUMENTS'][session['filter_settings']['type']]
+            
             class TmpMemoryForm(NewMemoryForm):
                 pass
             # iterate through the prescription and add fields accordingly [JB: Performance Issues?]
             for item in prescription.keys():
-                current_app.logger.info('contains: {}'.format(prescription[item]['key']))
+                current_app.logger.info('new view: contains: {}'.format(prescription[item]['key']))
                 if prescription.get('field_type') is None:
                     setattr(TmpMemoryForm, prescription[item]['key'], StringField(prescription[item]['label']))
             fields = prescription
 
+            current_app.logger.info('new view: render new memory template. Type is {}'.format(session['filter_settings']['type']))
+            session['type'] = session['filter_settings']['type']
             return render_template('memory/new_memory.html', title='New Memory Type',form=form, fields=fields)
 
     if form.validate_on_submit():
         if form.sbmMemorize.data:
-            current_app.logger.info('New memory posted for create.')
-            jsondoc['source'] = form.source.data
-            jsondoc['source_url'] = form.source_url.data
+            current_app.logger.info('new view: New memory posted for create.')
+            current_app.logger.info('new view: Form data present: {}'.format(form.data.keys()))
+            #jsondoc['source'] = form.source.data
+            #jsondoc['source_url'] = form.source_url.data
+            current_app.logger.info('new view: filter_settings: {}'.format(session['filter_settings']['type']))
+            for i in current_app.config['DOCUMENTS'][session['filter_settings']['type'].lower()].keys():
+                current_app.logger.info(prescription[i]['key'])
+                jsondoc[prescription[i]['key']] = form.data[prescription[i]['key']]
+                current_app.logger.info(jsondoc[prescription[i]['key']])
             memory = Memory(type=form.slcType.data, 
                             category=form.slcCategory.data,
                             abstract=form.tafAbstract.data,
@@ -334,7 +350,7 @@ def new():
                             memorized=datetime.now())
             db.session.add(memory)
             db.session.commit()
-            flash('New memory created!')
+            current_app.logger.info('new view: New memory created!')
 
             # add tags to list
             memory_id = memory.id
@@ -343,18 +359,18 @@ def new():
             tags_added = 0
             for item in taglist:
                 # check if tag already in database
-                current_app.logger.info('check if tag {} is already in db'.format(item))
+                current_app.logger.info('new view: check if tag {} is already in db'.format(item))
                 if Tag.query.filter(Tag.tag==item).first() is None:
                     # write to Tag table and remember tag.id
                     tag_in = Tag(tag=item)
                     db.session.add(tag_in)
                     db.session.flush()
                     tag_id = tag_in.id       #Tag.query.filter(Tag.tag==item).first()
-                    current_app.logger.info( 'added new tag {} to db with id {}'.format(item,tag_id) )
+                    current_app.logger.info( 'new view:added new tag {} to db with id {}'.format(item,tag_id) )
                 else:
                     # get tag.id from db
                     tag_id = Tag.query.filter(Tag.tag==item).first().id
-                    current_app.logger.info( 'old tag {} retrieved from  db with id {}'.format(item,tag_id) )
+                    current_app.logger.info( 'new view: old tag {} retrieved from  db with id {}'.format(item,tag_id) )
                 # create entry in memory_tag table
                 db.session.add(MemoryTag(memory_id=memory_id,tag_id=tag_id))
                 db.session.commit()
@@ -365,20 +381,61 @@ def new():
         flash_errors(form)
     return render_template('memory/new_memory.html', title='New Memory',form=form, fields=fields)
 
-"""
-bp.route('/forgetit', methods=['GET', 'POST'])
+# view a memory item
+@bp.route('/view', methods=['GET', 'POST'])
 @login_required
-def forgetit():
-     form = ForgetForm()
- 
-     if form.validate_on_submit():
-         current_app.logger.info('keep button return value'.format(form.keep.data)) 
-         current_app.logger.info('forget button return value'.format(form.forget.data))
-         db.session.commit()
-         flash('New memory created!')
-         return redirect(url_for('memory.index'))
-     return render_template('memory/forget.html', title='Forget or not foget',form=form)
-"""
+def view():
+    return view_with_purpose('view_only')
+
+# delete a memory item
+@bp.route('/delete', methods=['GET', 'POST'])
+@login_required
+def delete():
+    return view_with_purpose('delete')
+
+def view_with_purpose(purpose):
+    
+     # get existing memory using id passed in query
+    memory_id = request.args.get('id')
+    memory = Memory.query.get(memory_id)
+
+    # get the memory type
+    memory_type = memory.type.lower()
+
+    # 2. get the dictionary with the definition of the various document types. If 'any' set to news as default
+    prescription = current_app.config['DOCUMENTS'][memory_type]
+    current_app.logger.info('load memory structure for {}, found {}'.format(memory_type,prescription))
+
+    class TmpMemoryForm(ViewDeleteMemoryForm):
+        pass
+
+    # 3. iterate through the prescription and add fields accordingly [JB: Performance Issues?]
+    for item in prescription.keys():
+        current_app.logger.info('contains: {}'.format(prescription[item]['key']))
+        if prescription.get('field_type') is None:
+            setattr(TmpMemoryForm, prescription[item]['key'], StringField(prescription[item]['label']))
+
+    form = TmpMemoryForm()
+    
+    if form.validate_on_submit():
+        if form.sbmBack.data:
+            return redirect(url_for('memory.index'))
+        
+        if form.sbmDelete.data:
+            # forget
+            current_app.logger.info('forget: {}'.format(request.args.get('id')))
+            memory.dormant=True
+            db.session.commit()
+            #flash('Forgotten, that is sad')
+            return redirect(url_for('memory.index'))
+
+    else:
+        flash_errors(form)
+    
+    current_app.logger.info('route view: before render prescription looks like this: {}'.format(prescription))
+    current_app.logger.info('route view: memory contains this document: {}'.format(memory.doc))
+    return render_template('memory/diverse_memory.html', title='View Memory',form=form, fields=prescription, memory=memory, purpose=purpose)
+
 def flash_errors(form):
     """Flashes form errors"""
     for field, errors in form.errors.items():

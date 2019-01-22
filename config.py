@@ -25,9 +25,15 @@ class Config(object):
 									"k02" : {"key" : "username","label" : "Username"},
 									"k03" : {"key" : "password","label" : "Password"}
 						   		},
-               "fact" : 		{	# any contract like credit, purchase, rent, insurance, etc.
+               "citation" : 		{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "source","label" : "Source"}
-			   },
+			   					},
+               "document" : 	{	# any contract like credit, purchase, rent, insurance, etc.
+									"k01" : {"key" : "file","label" : "File ID"},
+									"k02" : {"key" : "source","label" : "Source"},
+									"k03" : {"key" : "file_url","label" : "File Location"},
+									"k04" : {"key" : "publication_date","label" : "Publication Date"}
+								},
                "contract" : 	{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "counterparty","label" : "Counterparty"}, # ideally use data from exchange
 									"k02" : {"key" : "contract_id","label" : "Contract ID"},
@@ -76,6 +82,12 @@ class Config(object):
 									"k05" : {"key" : "amount","label" : "Receivable Amount"},	# Forderungssbetrag
 									"k06" : {"key" : "due_date","label" : "Payment Due Date"}
 								},
+               "speech" : 		{	# personal speech fragments, to be used in some future presentations
+									"k01" : {"key" : "source","label" : "Source"}
+			   					},
+               "thought" : 		{	# what comes to mind and is considered worth remembering, to do
+									"k01" : {"key" : "source","label" : "Source"}
+			   					},
                "usecase" : 		{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "source","label" : "Source"},
 									"k02" : {"key" : "source_url","label" : "Source URL"},
@@ -93,4 +105,9 @@ class Config(object):
 							"sale" : "Sales Contract",
 							"service_provided" : "Contract for Services Provided",
 							"service_taken" : "Contract for Services Purchased"
+						}
+
+	CASHFLOW_TYPES = 	{
+							"pay_out" : "Privatentnahme Gesellschafter",
+							"pay_in" : "Privateinlage Gesellschafter"			
 						}

@@ -10,17 +10,18 @@ class NewMemoryForm(FlaskForm):
     memorize = SubmitField("Memorize")
     reselect = SubmitField("Reselect Filter")
     slcType = SelectField('Type', choices=[('iAccount','Internet Account'),        # internet konto informationen, e.g. Moodys
-                                          ('Citation','Citation'),              # Zitate berühmter Leute oder z.B. meiner Kinder
-                                          ('Contract','Contract'),              # contract with another entity/person, receivables, payables
-                                          ('Fact','Fact'),        	            # facts to be remembered, e.g. world oil production 
-                                          ('News','News'),		                # news
-                                          ('Payable','Payable'),                # empfangene Rechnungen
-                                          ('Payment','Payment'),                # payments made and payments received
-                                          ('Publication','Publication'),        # documents worth reading
-                                          ('Receivable','Receivable'),          # gestellte Rechnungen, forderungen gegen andere
-                                          ('Speech','Speech'),	                # personal speech fragments, to be used in some future presentations
-                                          ('Thought','Thought'),	            # what comes to mind and is considered worth remembering, to do
-                                          ('Usecase','Usecase')],	            # usecases worth remembering, e.g. big data use cases
+                                          ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                          ('Document','Document'),  # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		    # news
+                                          ('Payable','Payable'),    # empfangene Rechnungen
+                                          ('Payment','Payment'),    # payments made and payments received
+                                          ('Publication','Publication'),# documents worth reading
+                                          ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
                                           default='news')
 
     slcCategory = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
@@ -41,11 +42,23 @@ class NewMemoryForm(FlaskForm):
 
     sbmMemorize = SubmitField('Memorize')
 
+class ViewDeleteMemoryForm(FlaskForm):
+
+    memorize = SubmitField("Memorize", render_kw={'readonly': True})
+    reselect = SubmitField("Reselect Filter", render_kw={'readonly': True})
+    slcType = StringField('Type', render_kw={'readonly': True})
+    slcCategory = StringField('Tags', render_kw={'readonly': True})	
+    tafAbstract = TextAreaField('Abstract', render_kw={'readonly': True})
+    strTags = StringField('Tags', render_kw={'readonly': True})
+    sbmBack = SubmitField('Back', render_kw={'readonly': True})
+    sbmDelete = SubmitField('Forget ?', render_kw={'readonly': True})
+
 class EditMemoryForm(FlaskForm):
     id = StringField('id', render_kw={'readonly': True})
     type = SelectField('Type', choices=[('iAccount','Internet Account'),          # internet konto informationen, e.g. Moodys
                                           ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
                                           ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                          ('Document','Document'),  # contract with another entity/person, receivables, payables
                                           ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
                                           ('News','News'),		    # news
                                           ('Payable','Payable'),    # empfangene Rechnungen
@@ -86,17 +99,18 @@ class MemoryFilterForm(FlaskForm):
 
     slcType = SelectField('Type', choices=[('Any','Any'),                   # al are fine
                                           ('iAccount','Internet Account'),  # internet konto informationen, e.g. Moodys
-                                          ('Citation','Citation'),          # Zitate berühmter Leute oder z.B. meiner Kinder
-                                          ('Contract','Contract'),          # contract with another entity/person, receivables, payables
-                                          ('Fact','Fact'),        	        # facts to be remembered, e.g. world oil production 
-                                          ('News','News'),		            # news
-                                          ('Payable','Payable'),            # empfangene Rechnungen
-                                          ('Payment','Payment'),            # payments made and payments received
-                                          ('Publication','Publication'),    # documents worth reading
-                                          ('Receivable','Receivable'),      # gestellte Rechnungen, forderungen gegen andere
-                                          ('Speech','Speech'),		        # personal speech fragments, to be used in some future presentations
-                                          ('Thought','Thought'),	        # what comes to mind and is considered worth remembering, to do
-                                          ('Usecase','Usecase')],	        # usecases worth remembering, e.g. big data use cases
+                                          ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
+                                          ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                          ('Document','Document'),  # contract with another entity/person, receivables, payables
+                                          ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
+                                          ('News','News'),		    # news
+                                          ('Payable','Payable'),    # empfangene Rechnungen
+                                          ('Payment','Payment'),    # payments made and payments received
+                                          ('Publication','Publication'),# documents worth reading
+                                          ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
+                                          ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
+                                          ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
+                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
                                     default='Any')
 
     slcCategory = SelectField('Category', choices=[('Any','Any'),
