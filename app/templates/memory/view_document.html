@@ -2,7 +2,7 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-    <h1>{{ 'A Memory' }}</h1>
+    <h1>{{ 'The Document' }}</h1>
     <hr>
     <form action method="post" class="form" role="form" >
         {{ form.csrf_token }}
@@ -19,46 +19,18 @@
                     <input class="btn btn-primary" id="sbmDelete" name="sbmDelete" type="submit" value="I'd rather forget!">
                 {% endif %}
             </div>
-            
         </div>
         <hr>
         <div class="row">
             <div class="col-md-6">
                 <label for="slcType">Memory Type</label>
-                <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.type }}" readonly>
-            <br>
-            </div>
-       <!-- </div>
-        <div class="row">-->
-            <div class="col-md-6">
-                <label for="slcCategory">Memory Category</label>
-                <input class="form-control form-control-lg" type="text" id="slcCategory" name="slcCategory" value="{{ memory.category }}" readonly>
+                <input class="form-control form-control-lg" type="text" id="strFileName" name="strFilemname" value="{{ memory.type }}" readonly>
             <br>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <div class="form-group  required"><label class="control-label" for="Abstract">What it is about</label>
-                    <textarea class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here" rows=3 readonly>{{ memory.abstract }}</textarea>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group  required"><label for="Tags">Tags</label>
-                    <textarea class="form-control" id="strTags" name="strTags" placeholder="There should be tags here ... please add" rows=3 readonly>{{ ', '.join(memory.get_taglist()) }}</textarea>
-                </div>
-            </div>        
+            <iframe class="frame-border scroll-pane" src="static/{{ filename }}" frameborder="0"></iframe>
         </div>
-        <!-- Tags -->
-
-        {% for item in fields.keys() %}
-                <div class="row">
-                    <div class="col-md-6">
-                    <label> {{ fields[item]['label'] }} </label>
-                    <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}" value = "{{ memory.doc[fields[item]['key']] }}"  readonly>
-                    <br>
-                    </div>
-                </div>
-        {% endfor %}
         <div class="row">
             <div class="col-md-6">
                     <label for="slcPostedOn">{{ 'Posted or last changed on'.title() }}</label>

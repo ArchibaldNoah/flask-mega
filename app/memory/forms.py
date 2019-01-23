@@ -3,13 +3,7 @@ from wtforms import StringField, SubmitField, SelectField, FieldList, TextAreaFi
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, Length
 from app.models import User, Memory, Tag, MemoryTag
 
-
-
-class NewMemoryForm(FlaskForm):
-
-    memorize = SubmitField("Memorize")
-    reselect = SubmitField("Reselect Filter")
-    slcType = SelectField('Type', choices=[('iAccount','Internet Account'),        # internet konto informationen, e.g. Moodys
+_choices = [('iAccount','Internet Account'),        # internet konto informationen, e.g. Moodys
                                           ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
                                           ('Contract','Contract'),  # contract with another entity/person, receivables, payables
                                           ('Document','Document'),  # contract with another entity/person, receivables, payables
@@ -21,7 +15,13 @@ class NewMemoryForm(FlaskForm):
                                           ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
                                           ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
                                           ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
-                                          ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
+                                          ('Usecase','Usecase')]
+
+class NewMemoryForm(FlaskForm):
+
+    memorize = SubmitField("Memorize")
+    reselect = SubmitField("Reselect Filter")
+    slcType = SelectField('Type', choices= _choices,	# usecases worth remembering, e.g. big data use cases
                                           default='news')
 
     slcCategory = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
@@ -46,12 +46,35 @@ class ViewDeleteMemoryForm(FlaskForm):
 
     memorize = SubmitField("Memorize", render_kw={'readonly': True})
     reselect = SubmitField("Reselect Filter", render_kw={'readonly': True})
-    slcType = StringField('Type', render_kw={'readonly': True})
-    slcCategory = StringField('Tags', render_kw={'readonly': True})	
+    #slcType = StringField('Type', render_kw={'readonly': True})
+    slcType = SelectField('Type', choices=[('iAccount','Internet Account'),        # internet konto informationen, e.g. Moodys
+                                        ('Citation','Citation'),  # Zitate berühmter Leute oder z.B. meiner Kinder
+                                        ('Contract','Contract'),  # contract with another entity/person, receivables, payables
+                                        ('Document','Document'),  # contract with another entity/person, receivables, payables
+                                        ('Fact','Fact'),        	# facts to be remembered, e.g. world oil production 
+                                        ('News','News'),		    # news
+                                        ('Payable','Payable'),    # empfangene Rechnungen
+                                        ('Payment','Payment'),    # payments made and payments received
+                                        ('Publication','Publication'),# documents worth reading
+                                        ('Receivable','Receivable'),  # gestellte Rechnungen, forderungen gegen andere
+                                        ('Speech','Speech'),		# personal speech fragments, to be used in some future presentations
+                                        ('Thought','Thought'),	# what comes to mind and is considered worth remembering, to do
+                                        ('Usecase','Usecase')],	# usecases worth remembering, e.g. big data use cases
+                                        default='news')
+    #slcCategory = StringField('Tags', render_kw={'readonly': True})	
+    slcCategory = SelectField('Type', choices=[('Business','Business'),		# e.g. company news, own business
+                                            ('Finance','Finance'),		    # e.g. markets, stock prices
+                                            ('Home','Home'),                 # e.g. around home including personal finance issues
+                                            ('MZ-Patent','MZ-Patent'),            # in relation to family business
+                                            ('Sustainability','Sustainability'), # e.g. global warming, evs, batteries, demography
+                                            ('Tech','Tech'),               	# technology related, e.g. Big Data, Machine Learning, Engineering
+                                            ('Other','Other')])			    # the rest
     tafAbstract = TextAreaField('Abstract', render_kw={'readonly': True})
     strTags = StringField('Tags', render_kw={'readonly': True})
+    strPostedOn = StringField('Posted on', render_kw={'readonly': True})
     sbmBack = SubmitField('Back', render_kw={'readonly': True})
     sbmDelete = SubmitField('Forget ?', render_kw={'readonly': True})
+    sbmEdit = SubmitField('Forget ?', render_kw={'readonly': True})
 
 class EditMemoryForm(FlaskForm):
     id = StringField('id', render_kw={'readonly': True})

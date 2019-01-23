@@ -30,9 +30,10 @@ class Config(object):
 			   					},
                "document" : 	{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "file","label" : "File ID"},
-									"k02" : {"key" : "source","label" : "Source"},
-									"k03" : {"key" : "file_url","label" : "File Location"},
-									"k04" : {"key" : "publication_date","label" : "Publication Date"}
+									"k02" : {"key" : "document_id","label" : "Document ID"},
+									"k03" : {"key" : "source","label" : "Source"},
+									"k04" : {"key" : "file_url","label" : "File Location"},
+									"k05" : {"key" : "publication_date","label" : "Publication Date"}
 								},
                "contract" : 	{	# any contract like credit, purchase, rent, insurance, etc.
 									"k01" : {"key" : "counterparty","label" : "Counterparty"}, # ideally use data from exchange

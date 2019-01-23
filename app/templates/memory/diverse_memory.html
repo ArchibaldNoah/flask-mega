@@ -11,12 +11,14 @@
                 {% if purpose == 'view_only' %}
                     <input class="btn btn-primary" id="sbmBack" name="sbmBack" type="submit" value="Go back to list">
                 {% else %}
-                    <input class="btn btn-primary" id="sbmBack" name="sbmBack" type="submit" value="I will keep this">
+                    <input class="btn btn-primary" id="sbmBack" name="sbmBack" type="submit" value="I will keep as is">
                 {% endif %}
             </div>
             <div class="col-md-2">
                 {% if purpose == 'delete' %}
                     <input class="btn btn-primary" id="sbmDelete" name="sbmDelete" type="submit" value="I'd rather forget!">
+                {% else %}
+                    <input class="btn btn-primary" id="sbmEdit" name="sbmEdit" type="submit" value="Save Changes">
                 {% endif %}
             </div>
             
@@ -25,27 +27,56 @@
         <div class="row">
             <div class="col-md-6">
                 <label for="slcType">Memory Type</label>
-                <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.type }}" readonly>
+                {% if purpose == 'edit' %}
+                        <!--
+                        <select class="form-control" id="slcType" name="slcType" disabled>
+                        {% for i in form.slcType.choices %}{% if i[0]==session['filter_settings']['type'].title() %} <option selected="selected">{{ i[0] }}</option><br>{% else %}<option>{{ i[0] }}</option><br>{% endif %}
+                        {% endfor %}
+                        -->
+                        <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.type }}" readonly>
+                        </select>
+                {% else %}
+                    <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.type }}" readonly>
+                {% endif %}
             <br>
             </div>
        <!-- </div>
         <div class="row">-->
             <div class="col-md-6">
                 <label for="slcCategory">Memory Category</label>
-                <input class="form-control form-control-lg" type="text" id="slcCategory" name="slcCategory" value="{{ memory.category }}" readonly>
+                {% if purpose == 'edit' %}
+                <select class="form-control" id="slcCategory" name="slcCategory">
+                        {% for i in form.slcCategory.choices %}{% if i[0]==session['filter_settings']['category'].title() %} <option selected="selected">{{ i[0] }}</option>{% else %}<option>{{ i[0] }}</option><br>{% endif %}
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input class="form-control form-control-lg" type="text" id="slcCategory" name="slcCategory" value="{{ memory.category }}" readonly>
+                {% endif %}
             <br>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group  required"><label class="control-label" for="Abstract">What it is about</label>
-                    <textarea class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here" rows=3 readonly>{{ memory.abstract }}</textarea>
-                </div>
+                {% if purpose == 'edit' %}
+                    <div class="form-group  required"><label class="control-label" for="Abstract">What it is about</label>
+                        <textarea class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here" rows=3>{{ memory.abstract }}</textarea>
+                    </div>
+                {% else %}
+                    <div class="form-group  required"><label class="control-label" for="Abstract">What it is about</label>
+                        <textarea class="form-control" id="tafAbstract" name="tafAbstract" placeholder="Enter abstract here" rows=3 readonly>{{ memory.abstract }}</textarea>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-md-6">
-                <div class="form-group  required"><label for="Tags">Tags</label>
-                    <textarea class="form-control" id="strTags" name="strTags" placeholder="There should be tags here ... please add" rows=3 readonly>{{ ', '.join(memory.get_taglist()) }}</textarea>
-                </div>
+                {% if purpose == 'edit' %}
+                    <div class="form-group  required"><label for="Tags">Tags</label>
+                        <textarea class="form-control" id="strTags" name="strTags" placeholder="There should be tags here ... please add" rows=3>{{ ', '.join(memory.get_taglist()) }}</textarea>
+                    </div>
+                {% else %}
+                    <div class="form-group  required"><label for="Tags">Tags</label>
+                        <textarea class="form-control" id="strTags" name="strTags" placeholder="There should be tags here ... please add" rows=3 readonly>{{ ', '.join(memory.get_taglist()) }}</textarea>
+                    </div
+                {% endif %}
             </div>        
         </div>
         <!-- Tags -->
@@ -53,16 +84,26 @@
         {% for item in fields.keys() %}
                 <div class="row">
                     <div class="col-md-6">
-                    <label> {{ fields[item]['label'] }} </label>
-                    <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}" value = "{{ memory.doc[fields[item]['key']] }}"  readonly>
+                        {% if purpose == 'edit' %}
+                            <label> {{ fields[item]['label'] }} </label>
+                            <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}" value = "{{ memory.doc[fields[item]['key']] }}">
+                        {% else %}
+                            <label> {{ fields[item]['label'] }} </label>
+                            <input class="form-control form-control-lg" type="text" id="{{ fields[item]['key'] }}" name="{{ fields[item]['key'] }}" value = "{{ memory.doc[fields[item]['key']] }}"  readonly>
+                        {% endif %}
                     <br>
                     </div>
                 </div>
         {% endfor %}
         <div class="row">
             <div class="col-md-6">
+                {% if purpose == 'edit' %}
                     <label for="slcPostedOn">{{ 'Posted or last changed on'.title() }}</label>
-                    <input class="form-control form-control-lg" type="text" id="slcType" name="slcType" value="{{ memory.get_datestring() }}" readonly>
+                    <input class="form-control form-control-lg" type="text" id="strPostedOn" name="strPostedOn" value="{{ memory.get_datestring() }}" edit>
+                {% else %}
+                    <label for="slcPostedOn">{{ 'Posted or last changed on'.title() }}</label>
+                    <input class="form-control form-control-lg" type="text" id="strPostedOn" name="strPostedOn" value="{{ memory.get_datestring() }}" readonly>
+                {% endif %}
                 <br>
             </div>
         </div>

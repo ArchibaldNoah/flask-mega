@@ -1,4 +1,5 @@
 from sqlalchemy.dialects.postgresql import JSONB
+from sqlalchemy.orm.attributes import flag_modified
 
 from datetime import datetime
 from hashlib import md5
@@ -142,9 +143,13 @@ class Memory(db.Model):
 
     def get_memory_date(self):
         return self.memorized.strftime("%A %Y-%m-%d:%H-%M")
+    
+    def set_document(self, value):
+        self.doc = value
+        flag_modified(self, 'doc')
 
     def __repr__(self):
-        return '<Memory {} of type {}>'.format(self.type,self.id)
+        return '<Memory {} of type {}, category {} with {}>'.format(self.id,self.type,self.category,self.doc)
 
 class Tag(db.Model):
     __tablename__ = 'tag'
